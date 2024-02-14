@@ -32,3 +32,12 @@ Day 2
 
 <트리 치메 디 라바레도> <팔로리아> <라가주오이> <친퀘토리> <토파나> <기아우 패스> <여러 호수들 - 프라그세르, 브라이에스, 미주리나, 소라피스, 도비아코>
 링크 : https://m.blog.naver.com/jhggyu21/223142064413
+
+
+돌로미티 대중교통 관련 링크 : https://blog.naver.com/PostView.naver?blogId=day3737&logNo=223079526087&categoryNo=739&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView
+![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/4b4c81b2-de63-4a43-a348-193ff4640ab4)
+
+
+
+샤모니 안시 마을
+베네치아 ~ 밀라노 ~ 샤모니 ~ 취리히
