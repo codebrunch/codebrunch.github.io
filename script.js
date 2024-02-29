@@ -23,3 +23,35 @@ window.addEventListener('DOMContentLoaded', () => {
       postsList.appendChild(postDiv);
     });
   });
+
+  function marked(markdownText) {
+    // Markdown 구문을 HTML로 변환하는 간단한 함수
+    function convertMarkdownToHTML(markdownText) {
+        // 각 줄의 시작과 끝에 <p> 태그 추가
+        markdownText = '<p>' + markdownText.split('\n').join('</p><p>') + '</p>';
+        return markdownText;
+    }
+
+    // 간단한 Markdown 태그 변환
+    function applyBasicMarkdownSyntax(html) {
+        // 강조 텍스트 변환
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // 볼드체
+        html = html.replace(/__(.*?)__/g, '<strong>$1</strong>'); // 볼드체
+        html = html.replace(/\*(.*?)\*/g, '<em>$1</em>'); // 이탤릭체
+        html = html.replace(/_(.*?)_/g, '<em>$1</em>'); // 이탤릭체
+
+        // 링크 변환
+        html = html.replace(/\[([^\]]+)]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+
+        // 코드 블록 변환
+        html = html.replace(/```([^`]+)```/g, '<code>$1</code>');
+
+        return html;
+    }
+
+    // Markdown 텍스트를 HTML로 변환하여 반환
+    let html = convertMarkdownToHTML(markdownText);
+    html = applyBasicMarkdownSyntax(html);
+
+    return html;
+}
