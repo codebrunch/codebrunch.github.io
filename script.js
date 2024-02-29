@@ -12,22 +12,14 @@ window.addEventListener('DOMContentLoaded', () => {
     ];
   
     markdownFiles.forEach(file => {
-      // Markdown 파일을 가져오는 fetch 요청
-      fetch(file.path)
-        .then(response => response.text()) // 텍스트로 변환
-        .then(markdownText => {
-          // Markdown을 HTML로 변환하여 포스트로 추가
-          const postDiv = document.createElement('div');
-          postDiv.classList.add('post');
-          const postContent = `
-            <h2>${file.title}</h2>
-            <div>${marked(markdownText)}</div> <!-- marked.js를 사용하여 Markdown을 HTML로 변환 -->
-            <a href="${file.path}">포스트 보기</a>
-          `;
-          postDiv.innerHTML = postContent;
-          postsList.appendChild(postDiv);
-        })
-        .catch(error => console.error('Markdown 파일을 불러오는 중 오류가 발생했습니다:', error));
+      const postDiv = document.createElement('div');
+      postDiv.classList.add('post');
+      const postContent = `
+        <h2>${file.title}</h2>
+        <p>포스트를 보고 싶다면 해당 링크를 이용하여 확인하세요.</p>
+        <a href="${file.path}">포스트 보기</a>
+      `;
+      postDiv.innerHTML = postContent;
+      postsList.appendChild(postDiv);
     });
   });
-  
