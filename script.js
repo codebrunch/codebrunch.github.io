@@ -3,7 +3,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const postsList = document.getElementById('posts-list');
   
     // 여기서 Markdown 파일 목록을 가져오고, 각각의 Markdown 파일을 포스트로 처리합니다.
-    const markdownFiles = [
+    window.markdownFiles = [
       { title: '01 지역 간 이동수단 및 소요 시간', path: 'europe2024/01 지역 간 이동수단 및 소요 시간.md' },
       { title: '02 돌로미티 내 교통수단', path: 'europe2024/02 돌로미티 내 교통수단.md' },
       { title: '03 여행 계획', path: 'europe2024/03 여행 계획.md' },
