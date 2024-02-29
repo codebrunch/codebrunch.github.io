@@ -11,26 +11,5 @@
   <div id="markdown-container">
     <!-- 여기에 Markdown 파일 내용이 동적으로 삽입됩니다 -->
   </div>
-
-  <script>
-    // Markdown 파일을 HTML로 변환하여 적용하는 함수
-    function renderMarkdown(path) {
-      fetch(path)
-        .then(response => response.text())
-        .then(markdownText => {
-          // marked.js를 사용하여 Markdown을 HTML로 변환
-          const htmlContent = marked(markdownText);
-          // HTML 콘텐츠를 마크다운 컨테이너에 삽입
-          document.getElementById('markdown-container').innerHTML = htmlContent;
-        })
-        .catch(error => console.error('Markdown 파일을 불러오는 중 오류가 발생했습니다:', error));
-    }
-
-    // 페이지 로드 후 Markdown 파일 로드
-    window.addEventListener('DOMContentLoaded', () => {
-      // 여기에서 Markdown 파일 경로를 markdownFiles 배열에서 가져와서 사용합니다.
-      renderMarkdown(markdownFiles[0].path); // 예시로 첫 번째 Markdown 파일의 경로를 사용합니다.
-    });
-  </script>
 </body>
 </html>
