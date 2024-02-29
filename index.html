@@ -28,7 +28,8 @@
 
     // 페이지 로드 후 Markdown 파일 로드
     window.addEventListener('DOMContentLoaded', () => {
-      renderMarkdown('your-markdown-file.md'); // 여기에 Markdown 파일 경로를 입력하세요
+      // 여기에서 Markdown 파일 경로를 markdownFiles 배열에서 가져와서 사용합니다.
+      renderMarkdown(markdownFiles[0].path); // 예시로 첫 번째 Markdown 파일의 경로를 사용합니다.
     });
   </script>
 </body>
