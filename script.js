@@ -4,8 +4,10 @@ window.addEventListener('DOMContentLoaded', () => {
   
     // 여기서 Markdown 파일 목록을 가져오고, 각각의 Markdown 파일을 포스트로 처리합니다.
     const markdownFiles = [
-      { title: '포스트 제목 1', path: 'post-1.md' },
-      { title: '포스트 제목 2', path: 'post-2.md' },
+      { title: '01 지역 간 이동수단 및 소요 시간', path: 'europe2024/01 지역 간 이동수단 및 소요 시간.md' },
+      { title: '02 돌로미티 내 교통수단', path: '02 돌로미티 내 교통수단.md' },
+      { title: '03 여행 계획', path: '03 여행 계획.md' },
+      { title: '10 숙소 선정 시 주의사항', path: '10 숙소 선정 시 주의사항.md' },
       // 추가 포스트 목록 추가
     ];
   

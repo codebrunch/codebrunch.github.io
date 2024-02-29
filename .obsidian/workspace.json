@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Europe2024/01 지역 간 이동수단 및 소요 시간.md",
+                "file": "Europe2024/10 숙소 선정 시 주의사항.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Europe2024/01 지역 간 이동수단 및 소요 시간.md",
+                "file": "Europe2024/10 숙소 선정 시 주의사항.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Europe2024/01 지역 간 이동수단 및 소요 시간.md",
+                "file": "Europe2024/10 숙소 선정 시 주의사항.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Europe2024/01 지역 간 이동수단 및 소요 시간.md"
+                "file": "Europe2024/10 숙소 선정 시 주의사항.md"
               }
             }
           }
@@ -146,14 +146,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "bb3693cbbd38dd64",
+  "active": "3ed4853903342596",
   "lastOpenFiles": [
+    "Europe2024/02 돌로미티 내 교통수단.md",
+    "Europe2024/01 지역 간 이동수단 및 소요 시간.md",
     "script.js",
     "style.css",
-    "Europe2024/02 돌로미티 내 교통수단.md",
     "Europe2024/03 여행 계획.md",
     "Europe2024/10 숙소 선정 시 주의사항.md",
-    "Europe2024/01 지역 간 이동수단 및 소요 시간.md",
     "Develop/git 기본 명령어 모음.md",
     "Europe2024/north-italy.md",
     "Develop",
