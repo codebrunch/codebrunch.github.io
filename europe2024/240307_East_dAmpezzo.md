@@ -31,6 +31,9 @@ v 포인트 밸류 티켓?
 2. 친퀘토리
 https://blog.naver.com/chansoondae/221762508192
 
+리프트 타고 올라감
+Cinque = 
+
 3. 미주리나 호수
 담페초 마을에서 트레치메 디 라바레도 가는 중간에 있음
 ![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/73ae53d3-5986-447b-9c28-e7fa7f774626)
@@ -57,7 +60,14 @@ https://blog.naver.com/chansoondae/221762508192
 7. 파소 지아우
 https://blog.naver.com/chansoondae/221762508192
 
-8. 라가주오이
+8. 라가주오이 (전망대)
 https://blog.naver.com/chansoondae/221762508192
+보통 친퀘토리 갔다가 라가주오이?
 
-9. vkffhfldk
+해발 2,835m - 스위스 쉴트호른과 비슷
+
+![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/483b668a-22db-48d7-b29e-64a9b2c6efc0)
+![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/f7fea491-db0a-4fb0-830f-32a53ffb8c96)
+
+
+10. 파소 지아우
