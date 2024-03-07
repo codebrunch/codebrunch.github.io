@@ -1,8 +1,16 @@
-![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/cbfcc7f4-59a8-4466-be21-fd43e26be6b7)코르티나 담페초 근처 여행지 + 이동수단
+![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/cbfcc7f4-59a8-4466-be21-fd43e26be6b7)
+
+![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/bc0829db-9190-4bd0-b02b-06606bd879cd)
+
+
+코르티나 담페초 근처 여행지 + 이동수단
 
 산악지대라 날씨가 변덕스러움?
 
 ** 돌로미티 지역 적용되는 패스 종류 확인 : https://blog.naver.com/withjoy79/221642664818
+![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/413fba19-f3a5-49f9-a951-5e60239ad1dd)
+
+
 
 0. 숙소 후기
 https://m.blog.naver.com/withjoy79/221759696979
@@ -51,3 +59,5 @@ https://blog.naver.com/chansoondae/221762508192
 
 8. 라가주오이
 https://blog.naver.com/chansoondae/221762508192
+
+9. vkffhfldk
