@@ -15,6 +15,9 @@
 ![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/29cfcbd4-16b1-443c-8ec3-89fb4a67d14b)
 호텔 예약을 하면 이메일로 보내오는 신청서 양식을 작성해서 미리 차량 등록만 하면 문제없이 진입 가능
 
+![image](https://github.com/codebrunch/codebrunch.github.io/assets/70242287/027f1289-a5e6-4174-9095-5270e667f066)
+
+
 3. 북쪽으로 세체다 봉
 
 
