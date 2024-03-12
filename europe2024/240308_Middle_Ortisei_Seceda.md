@@ -1,6 +1,7 @@
 [1https://cafe.naver.com/italiafriends/3169](https://cafe.naver.com/italiafriends/3169)https://cafe.naver.com/italiafriends/3169
 
-
+* 슈퍼섬머 패스?
+  
 알페디시우시 - 세체다 곤돌라 탑승장 무료 주차장 정보 (https://m.blog.naver.com/everything91/222906997154)
 
 렌트카는 6월 마지막주 토요일 ~ 7월 첫주 일요일까지로 15일 렌트했을때 대충 금액
