@@ -1,290 +1,240 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="utf-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>개인정보처리방침 · 이세계 카우방</title>
-<style>
-  :root{
-    --bg:#faf7f2;
-    --surface:#ffffff;
-    --border:#e5ded2;
-    --text:#241c14;
-    --text-dim:#6b5f4e;
-    --accent:#a8641d;
-    --accent-soft:#fdf3e3;
-    --good:#3f6b3a;
-    --good-soft:#eef5ec;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#17130f;
-      --surface:#201a14;
-      --border:#362c21;
-      --text:#efe7d9;
-      --text-dim:#a3937c;
-      --accent:#e0a355;
-      --accent-soft:#2a2015;
-      --good:#8fbf85;
-      --good-soft:#1d2619;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#17130f;
-    --surface:#201a14;
-    --border:#362c21;
-    --text:#efe7d9;
-    --text-dim:#a3937c;
-    --accent:#e0a355;
-    --accent-soft:#2a2015;
-    --good:#8fbf85;
-    --good-soft:#1d2619;
-  }
-
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:"Pretendard","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
-    font-size:16px;
-    line-height:1.75;
-    -webkit-text-size-adjust:100%;
-  }
-  .wrap{max-width:720px;margin:0 auto;padding:56px 20px 96px;}
-
-  header{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:40px;}
-  .eyebrow{
-    font-size:13px;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--accent);font-weight:700;margin-bottom:10px;
-  }
-  h1{font-size:30px;line-height:1.3;margin:0 0 12px;text-wrap:balance;}
-  .meta{font-size:14px;color:var(--text-dim);margin:0;}
-
-  h2{
-    font-size:19px;margin:40px 0 12px;padding-top:4px;
-    text-wrap:balance;
-  }
-  p{margin:0 0 14px;}
-  ul{margin:0 0 14px;padding-left:20px;}
-  li{margin-bottom:6px;}
-
-  .callout{
-    background:var(--good-soft);
-    border:1px solid var(--border);
-    border-left:4px solid var(--good);
-    border-radius:6px;
-    padding:18px 20px;
-    margin:0 0 8px;
-  }
-  .callout strong{color:var(--good);}
-  .callout p:last-child{margin-bottom:0;}
-
-  table{
-    width:100%;border-collapse:collapse;margin:0 0 14px;
-    font-size:15px;
-  }
-  th,td{
-    text-align:left;padding:10px 12px;
-    border-bottom:1px solid var(--border);
-    vertical-align:top;
-  }
-  th{color:var(--text-dim);font-weight:600;width:38%;}
-
-  footer{
-    margin-top:56px;padding-top:24px;
-    border-top:1px solid var(--border);
-    font-size:14px;color:var(--text-dim);
-  }
-  .en{
-    margin-top:56px;padding-top:32px;
-    border-top:1px solid var(--border);
-  }
-  .en h2:first-of-type{margin-top:24px;}
-  code{
-    background:var(--accent-soft);
-    border:1px solid var(--border);
-    border-radius:4px;
-    padding:1px 6px;
-    font-family:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-    font-size:14px;
-  }
-</style>
+<title>이세계 카우방 — 개인정보처리방침</title>
+<meta name="description" content="이세계 카우방(com.codebrunch.isekaicow) 게임의 개인정보처리방침.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#010102" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="canonical" href="https://codebrunch.github.io/privacy/isekaicow/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff9d47'/%3E%3Cpath d='M11 11 L7 16 L11 21 M21 11 L25 16 L21 21' stroke='%2318191a' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
 
-  <header>
-    <div class="eyebrow">Privacy Policy</div>
-    <h1>이세계 카우방 개인정보처리방침</h1>
-    <p class="meta">시행일: 2026년 9월 1일 · 최종 수정일: 2026년 9월 1일</p>
-  </header>
-
-  <div class="callout">
-    <p><strong>요약 — 이 게임은 계정을 만들지 않고, 이름·이메일·연락처·위치를
-    수집하지 않습니다. 다만 광고를 위해 Google AdMob 을 사용합니다.</strong></p>
-    <p>광고를 보여주기 위해 AdMob 이 <strong>광고 ID(Advertising ID)</strong> 를
-    비롯한 기기 정보를 처리하며, 이를 위해 앱이 인터넷에 접속합니다.
-    게임 기록은 기기 안에만 저장되고 어디로도 전송되지 않습니다.</p>
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="../../">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      codebrunch
+    </a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 전환">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="메뉴 열기">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="../../#apps">앱</a>
+      <a href="../../#games">게임</a>
+      <a href="../../manuals/">매뉴얼</a>
+      <a href="../../#support">지원</a>
+      <a href="../">개인정보</a>
+    </nav>
   </div>
+</header>
 
-  <h2>1. 수집·처리하는 정보</h2>
-  <p>앱 자체가 직접 수집하는 개인정보는 <strong>없습니다.</strong> 이름, 이메일,
-  전화번호, 위치, 연락처, 사진을 요구하지 않으며 회원가입이나 로그인 절차가
-  없습니다.</p>
-  <p>다만 앱에 포함된 <strong>Google AdMob 광고 SDK</strong> 가 광고를 제공하는
-  과정에서 아래 정보를 처리합니다.</p>
-  <table>
-    <tr><th>처리 주체</th><td>Google (AdMob)</td></tr>
-    <tr><th>처리 정보</th><td>광고 ID(재설정 가능한 기기 식별자), 대략적인 위치(IP 기반),
-      기기·앱 정보, 광고 상호작용 기록</td></tr>
-    <tr><th>목적</th><td>광고 게재 및 측정, 부정 클릭 방지</td></tr>
-    <tr><th>보관</th><td>Google 의 정책에 따릅니다 (아래 5번의 링크 참고)</td></tr>
-  </table>
+<main id="main" class="doc">
+  <div class="wrap doc-wrap">
+    <article class="prose policy">
+      <div class="policy-body">
 
-  <h2>2. 광고가 나오는 곳</h2>
-  <p>광고는 사용자가 <strong>직접 버튼을 눌렀을 때만</strong> 재생되는 보상형
-  광고입니다. 게임 도중에 갑자기 끼어드는 광고는 없습니다.</p>
-  <table>
-    <tr><th>이어하기</th><td>사망 후 광고를 보면 그 자리에서 부활</td></tr>
-    <tr><th>보상 해금</th><td>조건을 채운 아군 젖소 색·난이도를 광고를 보고 해금</td></tr>
-    <tr><th>기록 공유</th><td>광고를 본 뒤 기록 이미지를 공유</td></tr>
-  </table>
+        <header>
+          <div class="eyebrow">Privacy Policy</div>
+          <h1>이세계 카우방 개인정보처리방침</h1>
+          <p class="meta">시행일: 2026년 9월 1일 · 최종 수정일: 2026년 9월 1일</p>
+        </header>
 
-  <h2>3. 기기에 저장되는 정보</h2>
-  <p>게임 진행에 필요한 아래 기록이 <strong>사용자 기기 내부에만</strong> 저장됩니다.</p>
-  <table>
-    <tr><th>저장 항목</th><td>최고 점수·생존 시간, 도달 레벨, 처치 수, 최대 소환 수,
-      해금한 색·난이도·업적</td></tr>
-    <tr><th>저장 위치</th><td>앱 전용 내부 저장소 (<code>save.cfg</code>)</td></tr>
-    <tr><th>외부 전송</th><td>없음 — 기기를 벗어나지 않습니다</td></tr>
-    <tr><th>삭제 방법</th><td>앱을 삭제하면 함께 삭제됩니다</td></tr>
-  </table>
-  <p>이 기록은 게임 점수일 뿐이며 개인을 식별할 수 없습니다.</p>
+        <div class="callout">
+          <p><strong>요약 — 이 게임은 계정을 만들지 않고, 이름·이메일·연락처·위치를
+          수집하지 않습니다. 다만 광고를 위해 Google AdMob 을 사용합니다.</strong></p>
+          <p>광고를 보여주기 위해 AdMob 이 <strong>광고 ID(Advertising ID)</strong> 를
+          비롯한 기기 정보를 처리하며, 이를 위해 앱이 인터넷에 접속합니다.
+          게임 기록은 기기 안에만 저장되고 어디로도 전송되지 않습니다.</p>
+        </div>
 
-  <h2>4. 기록 공유 기능</h2>
-  <p>사용자가 직접 공유 버튼을 누른 경우에만, 게임 결과가 담긴 이미지가 기기에
-  저장되고 안드로이드 공유 창이 열립니다. 이 이미지를 어느 앱으로 보낼지는
-  전적으로 사용자가 선택하며, 앱이 자동으로 어딘가에 업로드하지 않습니다.</p>
+        <h2>1. 수집·처리하는 정보</h2>
+        <p>앱 자체가 직접 수집하는 개인정보는 <strong>없습니다.</strong> 이름, 이메일,
+        전화번호, 위치, 연락처, 사진을 요구하지 않으며 회원가입이나 로그인 절차가
+        없습니다.</p>
+        <p>다만 앱에 포함된 <strong>Google AdMob 광고 SDK</strong> 가 광고를 제공하는
+        과정에서 아래 정보를 처리합니다.</p>
+        <table>
+          <tr><th>처리 주체</th><td>Google (AdMob)</td></tr>
+          <tr><th>처리 정보</th><td>광고 ID(재설정 가능한 기기 식별자), 대략적인 위치(IP 기반),
+            기기·앱 정보, 광고 상호작용 기록</td></tr>
+          <tr><th>목적</th><td>광고 게재 및 측정, 부정 클릭 방지</td></tr>
+          <tr><th>보관</th><td>Google 의 정책에 따릅니다 (아래 5번의 링크 참고)</td></tr>
+        </table>
 
-  <h2>5. 제3자 제공 및 외부 서비스</h2>
-  <p>이 앱은 광고를 위해 <strong>Google AdMob</strong> 을 사용합니다. Google 의
-  데이터 처리에 대해서는 아래를 참고하십시오.</p>
-  <ul>
-    <li><a href="https://policies.google.com/privacy">Google 개인정보처리방침</a></li>
-    <li><a href="https://support.google.com/admob/answer/6128543">AdMob 이 수집하는 데이터</a></li>
-  </ul>
-  <p>분석 도구(Analytics)나 크래시 리포팅 SDK 는 사용하지 않습니다. 게임 기록을
-  외부 서버로 보내지 않으며, 온라인 순위표가 없습니다.</p>
+        <h2>2. 광고가 나오는 곳</h2>
+        <p>광고는 사용자가 <strong>직접 버튼을 눌렀을 때만</strong> 재생되는 보상형
+        광고입니다. 게임 도중에 갑자기 끼어드는 광고는 없습니다.</p>
+        <table>
+          <tr><th>이어하기</th><td>사망 후 광고를 보면 그 자리에서 부활</td></tr>
+          <tr><th>보상 해금</th><td>조건을 채운 아군 젖소 색·난이도를 광고를 보고 해금</td></tr>
+          <tr><th>기록 공유</th><td>광고를 본 뒤 기록 이미지를 공유</td></tr>
+        </table>
 
-  <h2>6. 맞춤 광고를 원하지 않는 경우</h2>
-  <p>안드로이드 설정에서 광고 ID 를 직접 관리할 수 있습니다.</p>
-  <p><strong>설정 → 개인정보 보호 → 광고</strong> 에서 광고 ID 를 재설정하거나
-  삭제할 수 있습니다. 광고 ID 를 삭제하면 맞춤 광고가 중단됩니다(광고 자체는
-  계속 표시될 수 있습니다).</p>
+        <h2>3. 기기에 저장되는 정보</h2>
+        <p>게임 진행에 필요한 아래 기록이 <strong>사용자 기기 내부에만</strong> 저장됩니다.</p>
+        <table>
+          <tr><th>저장 항목</th><td>최고 점수·생존 시간, 도달 레벨, 처치 수, 최대 소환 수,
+            해금한 색·난이도·업적</td></tr>
+          <tr><th>저장 위치</th><td>앱 전용 내부 저장소 (<code>save.cfg</code>)</td></tr>
+          <tr><th>외부 전송</th><td>없음 — 기기를 벗어나지 않습니다</td></tr>
+          <tr><th>삭제 방법</th><td>앱을 삭제하면 함께 삭제됩니다</td></tr>
+        </table>
+        <p>이 기록은 게임 점수일 뿐이며 개인을 식별할 수 없습니다.</p>
 
-  <h2>7. 요청하는 권한</h2>
-  <p>광고를 받아오기 위해 <strong>인터넷 접속 권한</strong>
-  (<code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>)과
-  <strong>광고 ID 권한</strong>(<code>com.google.android.gms.permission.AD_ID</code>)
-  을 사용합니다. 이 권한들은 설치 시 자동으로 부여되며 별도 동의창이 뜨지 않습니다.</p>
-  <p>카메라, 위치, 저장소, 연락처, 마이크 등 그 밖의 권한은 요청하지 않습니다.</p>
+        <h2>4. 기록 공유 기능</h2>
+        <p>사용자가 직접 공유 버튼을 누른 경우에만, 게임 결과가 담긴 이미지가 기기에
+        저장되고 안드로이드 공유 창이 열립니다. 이 이미지를 어느 앱으로 보낼지는
+        전적으로 사용자가 선택하며, 앱이 자동으로 어딘가에 업로드하지 않습니다.</p>
 
-  <h2>8. 아동의 개인정보</h2>
-  <p>이 앱은 만 14세 미만 아동을 대상으로 하지 않습니다. 앱이 직접 개인정보를
-  수집하지는 않으나 광고가 포함되어 있으므로, 아동이 이용할 경우 보호자의
-  지도를 권합니다.</p>
+        <h2>5. 제3자 제공 및 외부 서비스</h2>
+        <p>이 앱은 광고를 위해 <strong>Google AdMob</strong> 을 사용합니다. Google 의
+        데이터 처리에 대해서는 아래를 참고하십시오.</p>
+        <ul>
+          <li><a href="https://policies.google.com/privacy">Google 개인정보처리방침</a></li>
+          <li><a href="https://support.google.com/admob/answer/6128543">AdMob 이 수집하는 데이터</a></li>
+        </ul>
+        <p>분석 도구(Analytics)나 크래시 리포팅 SDK 는 사용하지 않습니다. 게임 기록을
+        외부 서버로 보내지 않으며, 온라인 순위표가 없습니다.</p>
 
-  <h2>9. 방침 변경</h2>
-  <p>데이터를 다루는 기능이 추가·변경될 경우, 해당 기능이 적용된 버전을 배포하기
-  <em>전에</em> 이 문서를 갱신하고 상단의 시행일을 변경합니다. 중요한 변경이
-  있을 경우 앱 스토어 업데이트 설명을 통해 안내합니다.</p>
+        <h2>6. 맞춤 광고를 원하지 않는 경우</h2>
+        <p>안드로이드 설정에서 광고 ID 를 직접 관리할 수 있습니다.</p>
+        <p><strong>설정 → 개인정보 보호 → 광고</strong> 에서 광고 ID 를 재설정하거나
+        삭제할 수 있습니다. 광고 ID 를 삭제하면 맞춤 광고가 중단됩니다(광고 자체는
+        계속 표시될 수 있습니다).</p>
 
-  <h2>10. 문의</h2>
-  <p>개인정보처리방침에 대한 문의: <a href="mailto:codebrunch27@gmail.com">codebrunch27@gmail.com</a></p>
+        <h2>7. 요청하는 권한</h2>
+        <p>광고를 받아오기 위해 <strong>인터넷 접속 권한</strong>
+        (<code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code>)과
+        <strong>광고 ID 권한</strong>(<code>com.google.android.gms.permission.AD_ID</code>)
+        을 사용합니다. 이 권한들은 설치 시 자동으로 부여되며 별도 동의창이 뜨지 않습니다.</p>
+        <p>카메라, 위치, 저장소, 연락처, 마이크 등 그 밖의 권한은 요청하지 않습니다.</p>
 
-  <!-- ─────────────── English ─────────────── -->
-  <section class="en" lang="en">
-    <div class="eyebrow">English</div>
-    <h1 style="font-size:24px;">Privacy Policy — Isekai Cow Room</h1>
-    <p class="meta">Effective: September 1, 2026 · Last updated: September 1, 2026</p>
+        <h2>8. 아동의 개인정보</h2>
+        <p>이 앱은 만 14세 미만 아동을 대상으로 하지 않습니다. 앱이 직접 개인정보를
+        수집하지는 않으나 광고가 포함되어 있으므로, 아동이 이용할 경우 보호자의
+        지도를 권합니다.</p>
 
-    <div class="callout" style="margin-top:24px;">
-      <p><strong>Summary — no accounts, and we do not collect your name, email,
-      contacts, or location. However, this game shows ads through Google AdMob.</strong></p>
-      <p>To serve ads, AdMob processes your <strong>Advertising ID</strong> and other
-      device information, and the app connects to the internet for this purpose.
-      Your game records stay on your device and are never transmitted.</p>
+        <h2>9. 방침 변경</h2>
+        <p>데이터를 다루는 기능이 추가·변경될 경우, 해당 기능이 적용된 버전을 배포하기
+        <em>전에</em> 이 문서를 갱신하고 상단의 시행일을 변경합니다. 중요한 변경이
+        있을 경우 앱 스토어 업데이트 설명을 통해 안내합니다.</p>
+
+        <h2>10. 문의</h2>
+        <p>개인정보처리방침에 대한 문의: <a href="mailto:codebrunch27@gmail.com">codebrunch27@gmail.com</a></p>
+
+        <!-- ─────────────── English ─────────────── -->
+        <section class="en" lang="en">
+          <div class="eyebrow">English</div>
+          <h1 style="font-size:24px;">Privacy Policy — Isekai Cow Room</h1>
+          <p class="meta">Effective: September 1, 2026 · Last updated: September 1, 2026</p>
+
+          <div class="callout" style="margin-top:24px;">
+            <p><strong>Summary — no accounts, and we do not collect your name, email,
+            contacts, or location. However, this game shows ads through Google AdMob.</strong></p>
+            <p>To serve ads, AdMob processes your <strong>Advertising ID</strong> and other
+            device information, and the app connects to the internet for this purpose.
+            Your game records stay on your device and are never transmitted.</p>
+          </div>
+
+          <h2>1. Information collected</h2>
+          <p>The app itself collects <strong>no personal information</strong> — no names,
+          emails, phone numbers, location, contacts, or photos. There is no sign-up or login.</p>
+          <p>However, the bundled <strong>Google AdMob SDK</strong> processes the following
+          in order to serve ads: your Advertising ID (a resettable device identifier),
+          approximate location derived from IP address, device and app information, and
+          ad interaction data. Google is the controller of that processing; its purposes
+          are ad delivery, measurement, and fraud prevention.</p>
+
+          <h2>2. Where ads appear</h2>
+          <p>All ads are <strong>rewarded ads that play only when you tap a button</strong>.
+          No ads interrupt gameplay.</p>
+          <ul>
+            <li><strong>Continue</strong> — watch an ad to revive after dying</li>
+            <li><strong>Unlock</strong> — watch an ad to unlock an ally cow color or difficulty
+              you have already qualified for</li>
+            <li><strong>Share</strong> — watch an ad, then share your result image</li>
+          </ul>
+
+          <h2>3. Data stored on your device</h2>
+          <p>The following gameplay records are stored <strong>only on your device</strong>:
+          best score and survival time, level reached, kill count, maximum summoned allies,
+          and unlocked colors, difficulties, and achievements. They are saved in the app's
+          private storage, never leave the device, cannot identify you, and are deleted
+          when you uninstall the app.</p>
+
+          <h2>4. Record sharing</h2>
+          <p>If you tap the share button, an image of your result is saved to your device
+          and the Android share sheet opens. Which app you send it to is entirely your
+          choice; the app never uploads it anywhere on its own.</p>
+
+          <h2>5. Third parties</h2>
+          <p>This app uses <strong>Google AdMob</strong> for advertising. See
+          <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and
+          <a href="https://support.google.com/admob/answer/6128543">the data AdMob collects</a>.</p>
+          <p>The app uses no analytics or crash-reporting SDKs, sends no game records to any
+          server, and has no online leaderboard.</p>
+
+          <h2>6. Opting out of personalized ads</h2>
+          <p>You can manage your Advertising ID in <strong>Settings → Privacy → Ads</strong>,
+          where you can reset or delete it. Deleting it stops personalized advertising
+          (ads themselves may still appear).</p>
+
+          <h2>7. Permissions</h2>
+          <p>To fetch ads the app uses internet access (<code>INTERNET</code>,
+          <code>ACCESS_NETWORK_STATE</code>) and the advertising ID permission
+          (<code>com.google.android.gms.permission.AD_ID</code>). These are granted at
+          install time and show no separate prompt. No camera, location, storage,
+          contacts, or microphone permissions are requested.</p>
+
+          <h2>8. Children</h2>
+          <p>This app is not directed to children under 13. While the app collects no
+          personal information itself, it does contain advertising, so parental guidance
+          is advised.</p>
+
+          <h2>9. Changes</h2>
+          <p>If features that handle data are added or changed, this document will be
+          updated <em>before</em> that version ships, and the effective date above will
+          change.</p>
+
+          <h2>10. Contact</h2>
+          <p>Questions about this policy: <a href="mailto:codebrunch27@gmail.com">codebrunch27@gmail.com</a></p>
+        </section>
+
+        <footer>
+          이세계 카우방 (Isekai Cow Room) · 패키지 <code>com.codebrunch.isekaicow</code>
+        </footer>
+
+      </div>
+    </article>
+
+    <div class="doc-nav">
+      <a class="btn btn-secondary btn-sm" href="../">방침 목록</a>
+      <a class="btn btn-secondary btn-sm" href="../../">홈으로</a>
+      <a class="btn btn-secondary btn-sm" href="mailto:codebrunch27@gmail.com">문의하기</a>
     </div>
+  </div>
+</main>
 
-    <h2>1. Information collected</h2>
-    <p>The app itself collects <strong>no personal information</strong> — no names,
-    emails, phone numbers, location, contacts, or photos. There is no sign-up or login.</p>
-    <p>However, the bundled <strong>Google AdMob SDK</strong> processes the following
-    in order to serve ads: your Advertising ID (a resettable device identifier),
-    approximate location derived from IP address, device and app information, and
-    ad interaction data. Google is the controller of that processing; its purposes
-    are ad delivery, measurement, and fraud prevention.</p>
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 codebrunch. All rights reserved.</span>
+      <span><a href="../../">codebrunch.github.io</a></span>
+    </div>
+  </div>
+</footer>
 
-    <h2>2. Where ads appear</h2>
-    <p>All ads are <strong>rewarded ads that play only when you tap a button</strong>.
-    No ads interrupt gameplay.</p>
-    <ul>
-      <li><strong>Continue</strong> — watch an ad to revive after dying</li>
-      <li><strong>Unlock</strong> — watch an ad to unlock an ally cow color or difficulty
-        you have already qualified for</li>
-      <li><strong>Share</strong> — watch an ad, then share your result image</li>
-    </ul>
-
-    <h2>3. Data stored on your device</h2>
-    <p>The following gameplay records are stored <strong>only on your device</strong>:
-    best score and survival time, level reached, kill count, maximum summoned allies,
-    and unlocked colors, difficulties, and achievements. They are saved in the app's
-    private storage, never leave the device, cannot identify you, and are deleted
-    when you uninstall the app.</p>
-
-    <h2>4. Record sharing</h2>
-    <p>If you tap the share button, an image of your result is saved to your device
-    and the Android share sheet opens. Which app you send it to is entirely your
-    choice; the app never uploads it anywhere on its own.</p>
-
-    <h2>5. Third parties</h2>
-    <p>This app uses <strong>Google AdMob</strong> for advertising. See
-    <a href="https://policies.google.com/privacy">Google's Privacy Policy</a> and
-    <a href="https://support.google.com/admob/answer/6128543">the data AdMob collects</a>.</p>
-    <p>The app uses no analytics or crash-reporting SDKs, sends no game records to any
-    server, and has no online leaderboard.</p>
-
-    <h2>6. Opting out of personalized ads</h2>
-    <p>You can manage your Advertising ID in <strong>Settings → Privacy → Ads</strong>,
-    where you can reset or delete it. Deleting it stops personalized advertising
-    (ads themselves may still appear).</p>
-
-    <h2>7. Permissions</h2>
-    <p>To fetch ads the app uses internet access (<code>INTERNET</code>,
-    <code>ACCESS_NETWORK_STATE</code>) and the advertising ID permission
-    (<code>com.google.android.gms.permission.AD_ID</code>). These are granted at
-    install time and show no separate prompt. No camera, location, storage,
-    contacts, or microphone permissions are requested.</p>
-
-    <h2>8. Children</h2>
-    <p>This app is not directed to children under 13. While the app collects no
-    personal information itself, it does contain advertising, so parental guidance
-    is advised.</p>
-
-    <h2>9. Changes</h2>
-    <p>If features that handle data are added or changed, this document will be
-    updated <em>before</em> that version ships, and the effective date above will
-    change.</p>
-
-    <h2>10. Contact</h2>
-    <p>Questions about this policy: <a href="mailto:codebrunch27@gmail.com">codebrunch27@gmail.com</a></p>
-  </section>
-
-  <footer>
-    이세계 카우방 (Isekai Cow Room) · 패키지 <code>com.codebrunch.isekaicow</code>
-  </footer>
-
-</div>
+<script src="../../script.js"></script>
 </body>
 </html>

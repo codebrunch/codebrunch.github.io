@@ -404,3 +404,69 @@ footer{border-top:1px solid var(--hairline);padding:64px 0 48px;color:var(--ink-
   display:flex;flex-wrap:wrap;gap:var(--sp-sm);
   margin-top:var(--sp-2xl);padding-top:var(--sp-lg);border-top:1px solid var(--hairline);
 }
+
+/* ---------------- privacy policy documents ----------------
+   The four policy pages are imported verbatim — the wording, tables and
+   section order are legal text and must not be touched. So instead of
+   rewriting their markup we map the classes they already carry onto the
+   site tokens. Editing a policy means editing its words, never these
+   rules. Legacy classes in use: meta, updated, eyebrow, langbar, summary,
+   callout, scroll, section, en, lang-switch. */
+[hidden]{display:none !important}
+
+.policy .meta,
+.policy .updated{
+  margin:0 0 var(--sp-xl);padding:var(--sp-md) 0;
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  font-size:13px;line-height:1.8;color:var(--ink-subtle);
+}
+.policy .meta b{color:var(--ink);font-weight:500}
+
+.policy .eyebrow{
+  display:block;background:none;border:0;border-radius:0;padding:0;
+  margin:0 0 var(--sp-sm);
+  font-size:13px;font-weight:500;letter-spacing:.4px;
+  color:var(--accent-ink);text-transform:uppercase;
+}
+
+.policy .langbar{margin:0 0 var(--sp-xl);font-size:14px}
+.policy .langbar a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:2px}
+
+/* the "in short" box each policy opens with */
+.policy .summary,
+.policy .callout{
+  border:1px solid var(--hairline);border-left:3px solid var(--accent);
+  background:var(--surface-1);border-radius:var(--r-md);
+  padding:var(--sp-md) var(--sp-lg);margin:0 0 var(--sp-xl);
+}
+.policy .summary p,
+.policy .callout p{margin:0 0 var(--sp-xs)}
+.policy .summary p:last-child,
+.policy .callout p:last-child{margin-bottom:0}
+
+.policy .scroll{overflow-x:auto;margin:0 0 var(--sp-md);-webkit-overflow-scrolling:touch}
+
+.policy hr.section{
+  border:0;border-top:1px solid var(--hairline-strong);
+  margin:var(--section) 0 var(--sp-2xl);
+}
+.policy .en{display:block;margin-top:var(--section);padding-top:var(--sp-2xl);border-top:1px solid var(--hairline-strong)}
+.policy hr.section + .en{margin-top:0;padding-top:0;border-top:0}
+
+/* triplog serves both languages from one page and swaps them with JS */
+.policy .lang-switch{
+  display:flex;gap:var(--sp-xs);flex-wrap:wrap;
+  margin:0 0 var(--sp-xl);padding-bottom:var(--sp-lg);
+  border-bottom:1px solid var(--hairline);
+}
+.policy .lang-switch button{
+  font:inherit;font-size:13px;font-weight:500;
+  padding:7px 14px;min-height:36px;cursor:pointer;
+  border:1px solid var(--hairline);border-radius:var(--r-md);
+  background:var(--surface-1);color:var(--ink-subtle);
+  transition:background .15s,border-color .15s,color .15s;
+}
+.policy .lang-switch button:hover{background:var(--surface-2);border-color:var(--hairline-strong);color:var(--ink)}
+.policy .lang-switch button[aria-pressed="true"]{
+  background:var(--accent);border-color:var(--accent);color:var(--on-accent);
+}
