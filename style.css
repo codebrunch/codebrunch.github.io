@@ -326,3 +326,81 @@ footer{border-top:1px solid var(--hairline);padding:64px 0 48px;color:var(--ink-
   .cta{padding:var(--sp-xl);flex-direction:column;align-items:flex-start}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
+
+/* ---------------- manual documents ----------------
+   Long-form pages under /manuals/. The prose column is capped near
+   72ch; only tables and code blocks are allowed to break out, and
+   they scroll inside themselves so the page never scrolls sideways. */
+.doc{padding:var(--sp-2xl) 0 var(--section)}
+.doc-wrap{max-width:760px}
+.doc h1{font-size:clamp(28px,4.2vw,44px);letter-spacing:-1.2px;margin:0 0 var(--sp-md)}
+.doc .lede{font-size:17px;margin-bottom:var(--sp-xl)}
+
+.doc-meta{
+  display:flex;flex-wrap:wrap;gap:var(--sp-md);align-items:center;
+  padding:var(--sp-md) 0;margin-bottom:var(--sp-xl);
+  border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);
+  font-size:13px;color:var(--ink-subtle);
+}
+.doc-meta .k{color:var(--ink-tertiary);margin-right:6px}
+
+.toc{
+  background:var(--surface-1);border:1px solid var(--hairline);
+  border-radius:var(--r-lg);padding:var(--sp-lg);margin:0 0 var(--sp-2xl);
+}
+.toc h2{font-size:13px;font-weight:500;letter-spacing:.4px;color:var(--accent-ink);
+  text-transform:uppercase;margin:0 0 var(--sp-sm)}
+.toc ol{margin:0;padding-left:1.25em;display:grid;gap:8px}
+.toc a{font-size:15px;color:var(--ink-muted)}
+.toc a:hover{color:var(--ink-subtle);text-decoration:underline}
+
+.prose{max-width:72ch}
+.prose h2{
+  font-size:24px;letter-spacing:-.5px;margin:var(--sp-2xl) 0 var(--sp-md);
+  padding-top:var(--sp-lg);border-top:1px solid var(--hairline);
+}
+.prose h2:first-child{margin-top:0;padding-top:0;border-top:0}
+.prose h3{font-size:18px;font-weight:500;letter-spacing:-.3px;margin:var(--sp-xl) 0 var(--sp-xs)}
+.prose p{margin:0 0 var(--sp-md);color:var(--ink-muted);line-height:1.75}
+.prose ul,.prose ol{margin:0 0 var(--sp-md);padding-left:1.35em;color:var(--ink-muted);line-height:1.75}
+.prose li{margin-bottom:6px}
+.prose li::marker{color:var(--ink-tertiary)}
+.prose strong{color:var(--ink);font-weight:500}
+.prose a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:2px}
+
+.prose .steps{list-style:none;padding:0;counter-reset:step}
+.prose .steps>li{
+  counter-increment:step;position:relative;
+  padding-left:38px;margin-bottom:var(--sp-md);
+}
+.prose .steps>li::before{
+  content:counter(step);position:absolute;left:0;top:1px;
+  width:24px;height:24px;border-radius:var(--r-pill);
+  background:var(--surface-3);border:1px solid var(--hairline);
+  color:var(--ink-subtle);font-family:var(--mono);font-size:12px;
+  display:grid;place-items:center;
+}
+
+.note{
+  border:1px solid var(--hairline);border-left:3px solid var(--accent);
+  background:var(--surface-1);border-radius:var(--r-md);
+  padding:var(--sp-md) var(--sp-lg);margin:0 0 var(--sp-md);
+}
+.note p:last-child{margin-bottom:0}
+.note .label{
+  display:block;font-size:12px;font-weight:500;letter-spacing:.4px;
+  color:var(--accent-ink);text-transform:uppercase;margin-bottom:6px;
+}
+
+.table-scroll{overflow-x:auto;margin:0 0 var(--sp-md);-webkit-overflow-scrolling:touch}
+.prose table{border-collapse:collapse;width:100%;min-width:420px;font-size:14px}
+.prose th,.prose td{
+  border:1px solid var(--hairline);padding:9px 12px;text-align:left;
+  color:var(--ink-muted);line-height:1.6;vertical-align:top;
+}
+.prose th{background:var(--surface-2);color:var(--ink);font-weight:500}
+
+.doc-nav{
+  display:flex;flex-wrap:wrap;gap:var(--sp-sm);
+  margin-top:var(--sp-2xl);padding-top:var(--sp-lg);border-top:1px solid var(--hairline);
+}

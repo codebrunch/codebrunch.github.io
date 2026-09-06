@@ -16,19 +16,26 @@ privacy/
   isekaicow/index.html      이세계 카우방
   triplog/index.html        여행일기 (TripDiary)
   mouda/index.html          모으다
-manuals/                    앱별 사용 매뉴얼 (작성 예정)
+manuals/
+  index.html                매뉴얼 목록
+  urlnote.html              링크노트 — 시작하기
+  urlnote-backup.html       링크노트 — 백업과 내보내기
+  tripdiary.html            여행일기 — 시작하기
+  mouda.html                모으다 — 시작하기
+  mouda-budget.html         모으다 — 가계부와 통계
+  isekaicow.html            이세계 카우방 — 플레이 가이드
 app-ads.txt                 AdMob 앱 인증 — 반드시 도메인 루트에 유지
 google69e3d51c4a90be92.html Google Search Console 소유권 확인 — 삭제 금지
 ```
 
 ## 앱
 
-| 앱 | 패키지 | 방침 |
-|---|---|---|
-| 링크노트 | `com.codebrunch.url` | [/privacy/urlnote/](privacy/urlnote/) |
-| 이세계 카우방 | `com.codebrunch.isekaicow` | [/privacy/isekaicow/](privacy/isekaicow/) |
-| 여행일기 (TripDiary) | *(확인 필요)* | [/privacy/triplog/](privacy/triplog/) |
-| 모으다 | `com.codebrunch.omnitask` | [/privacy/mouda/](privacy/mouda/) |
+| 앱 | 패키지 | 소스 | 방침 |
+|---|---|---|---|
+| 링크노트 | `com.codebrunch.url` | `app-url-keeper` | [/privacy/urlnote/](privacy/urlnote/) |
+| 이세계 카우방 (게임) | `com.codebrunch.isekaicow` | `game-isekai-cow` | [/privacy/isekaicow/](privacy/isekaicow/) |
+| 여행일기 (TripDiary) | `com.codebrunch.triplog` | `app-trip-tracker` | [/privacy/triplog/](privacy/triplog/) |
+| 모으다 | `com.codebrunch.omnitask` | `app-planner` | [/privacy/mouda/](privacy/mouda/) |
 
 ## 개인정보처리방침 관리 규칙
 
@@ -36,6 +43,12 @@ google69e3d51c4a90be92.html Google Search Console 소유권 확인 — 삭제 �
 - 게시본이 앱의 실제 동작과 다르면 그 자체로 Play 스토어 정책 위반입니다. 기능을 바꾼 커밋과 방침을 고친 커밋은 항상 같이 갑니다.
 - 이전 주소(`codebrunch.github.io/urlnote/`, `/isekaicow/`, `/triplog/`, `sjkyle.github.io/mouda/`)는 리다이렉트 스텁으로 유지합니다. Play 콘솔의 방침 URL을 새 주소로 모두 교체한 뒤에도 스텁은 지우지 않습니다.
 - 광고 SDK(AdMob)를 쓰는 앱은 **이세계 카우방** 하나입니다. `app-ads.txt` 는 이 앱 때문에 필요하며 도메인 루트에 있어야 합니다.
+- 방침 문서는 각 앱 소스와 짝입니다. 권한을 추가하거나 네트워크 호출을 늘렸다면 해당 방침의 **1. 수집하는 정보**와 **권한** 절을 같은 PR에서 고칩니다.
+
+### 매뉴얼 작성 규칙
+
+- 화면에 실제로 있는 문구만 씁니다. 설정 항목 이름은 각 앱의 `values-ko/strings.xml`(Kotlin) 또는 `lib/l10n/app_ko.arb`(Flutter)에서 그대로 가져옵니다.
+- 페이지 껍데기(head·nav·footer)는 손으로 고치지 않습니다. 전부 한 템플릿에서 나오므로 테마 토글과 FOUC 방지 스크립트가 모든 문서에서 같아야 합니다.
 
 ## 디자인
 

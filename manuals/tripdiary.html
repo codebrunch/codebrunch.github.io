@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>여행일기 — 시작하기 — codebrunch</title>
+<meta name="description" content="여행일기(TripDiary) 사용 매뉴얼. 여행 만들기, 일정과 장소 등록, 링크 모으기, 사본·온라인 공유.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#010102" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="canonical" href="https://codebrunch.github.io/manuals/tripdiary.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff9d47'/%3E%3Cpath d='M11 11 L7 16 L11 21 M21 11 L25 16 L21 21' stroke='%2318191a' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      codebrunch
+    </a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 전환">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="메뉴 열기">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="../#apps">앱</a>
+      <a href="../#games">게임</a>
+      <a href="./">매뉴얼</a>
+      <a href="../#support">지원</a>
+      <a href="../privacy/">개인정보</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <div class="wrap doc-wrap">
+    <p class="eyebrow"><span class="dot"></span> 여행일기 · TripDiary</p>
+    <h1>시작하기</h1>
+    <p class="lede">여행 일정을 날짜별로 정리하고 장소마다 구글맵·블로그 링크를 모아 두는 앱입니다. 완성한 일정은 사본이나 온라인 링크로 공유할 수 있습니다.</p>
+    <div class="doc-meta">
+      <span><span class="k">패키지 </span>com.codebrunch.triplog</span>
+      <span><span class="k">업데이트 </span>2026년 9월 6일</span>
+    </div>
+    <nav class="toc" aria-label="목차">
+      <h2>이 문서에서</h2>
+      <ol>
+        <li><a href="#trip">여행 만들기</a></li>
+        <li><a href="#days">날짜 다루기</a></li>
+        <li><a href="#place">일정 추가하기</a></li>
+        <li><a href="#links">링크 모으기</a></li>
+        <li><a href="#reference">참고 탭</a></li>
+        <li><a href="#notify">알림과 화면 설정</a></li>
+        <li><a href="#share">공유하기</a></li>
+        <li><a href="#backup">백업</a></li>
+      </ol>
+    </nav>
+
+    <article class="prose">
+
+      <h2 id="trip">여행 만들기</h2>
+      <ol class="steps">
+        <li><strong>새 여행</strong>을 누릅니다.</li>
+        <li>제목과 <strong>여행 기간</strong>(시작일·종료일)을 넣습니다.</li>
+        <li>저장하면 <strong>그 범위의 날짜가 자동으로 채워집니다.</strong></li>
+      </ol>
+      <p>커버 이미지는 선택입니다. 넣으면 헤더 배경으로 깔리고, 넣지 않으면 제목과 기간만 표시됩니다. 나중에 <strong>여행 정보 수정</strong>에서 바꾸거나 지울 수 있습니다.</p>
+
+      <h2 id="days">날짜 다루기</h2>
+      <p>날짜 바는 한 번에 7일을 보여주고, 그보다 길면 옆으로 밀어 넘깁니다. 날짜를 고르면 아래 목록이 그 날의 일정으로 바뀝니다.</p>
+      <ul>
+        <li><strong>날짜 추가</strong> — 기간 밖의 날을 직접 넣습니다. 기간을 고치면 그 범위는 자동으로 채워집니다.</li>
+        <li><strong>요일 제목 수정</strong> — 그 날에 이름을 붙입니다. 비워 두면 날짜로 표시됩니다.</li>
+        <li><strong>시간순 정렬</strong> — 그 날의 일정을 시각 순서로 다시 세웁니다.</li>
+      </ul>
+      <div class="note">
+        <span class="label">알아두기</span>
+        <p>날짜를 지워도 <strong>배정된 장소 자체는 여행에 남습니다.</strong> 다른 날짜에 다시 넣을 수 있습니다.</p>
+      </div>
+
+      <h2 id="place">일정 추가하기</h2>
+      <p>오른쪽 아래 <strong>+</strong> 버튼으로 그 날의 일정을 추가합니다. 채울 수 있는 항목은 다음과 같고, 제목 외에는 모두 선택입니다.</p>
+      <div class="table-scroll">
+      <table>
+        <tr><th>항목</th><th>설명</th></tr>
+        <tr><td>일정 제목</td><td>목록에 크게 보이는 이름</td></tr>
+        <tr><td>요약</td><td>제목 아래 한 줄로 짧게 보입니다</td></tr>
+        <tr><td>분류</td><td>숙소 · 교통 · 항공 · 식당 · 카페 · 관광 · 액티비티 · 쇼핑 · 업무 · 회식 · 기타. 목록 왼쪽 아이콘이 됩니다</td></tr>
+        <tr><td>시각</td><td>정하면 시간순 정렬에 쓰입니다</td></tr>
+        <tr><td>주소</td><td>넣으면 <strong>구글맵에서 열기</strong>가 동작합니다</td></tr>
+        <tr><td>예약 확인번호 · 영업시간 · 메모</td><td>현지에서 바로 꺼내 볼 정보</td></tr>
+      </table>
+      </div>
+
+      <h3>호텔처럼 여러 날에 걸치는 일정</h3>
+      <p>+ 버튼을 <strong>길게 누르면 기존 장소 넣기</strong>가 열립니다. 이미 만든 장소를 다른 날짜에도 넣을 수 있습니다. 넣을 때 그 날짜의 시각을 따로 정하며, <strong>원본과는 별개의 항목</strong>이 되어 이후 서로 연결되지 않습니다.</p>
+      <p>어떤 날짜에서만 빼려면 일정 상세에서 <strong>이 날짜에서 빼기</strong>를 씁니다. 장소 자체와 다른 날짜의 배정은 그대로 남습니다.</p>
+
+      <h2 id="links">링크 모으기</h2>
+      <p>일정 상세의 <strong>정보 소스</strong>에서 + 버튼으로 구글맵·블로그 주소를 모읍니다.</p>
+      <ol class="steps">
+        <li>주소를 붙여넣습니다.</li>
+        <li><strong>제목 자동 가져오기</strong>를 누르면 페이지에서 제목을 읽어옵니다.</li>
+        <li>자동 인식이 실패해도 제목을 직접 입력해 저장할 수 있습니다.</li>
+      </ol>
+      <p>링크는 지도 · 정보 · 기타로 유형을 나눠 둘 수 있습니다.</p>
+
+      <h2 id="reference">참고 탭</h2>
+      <p>여행 상세는 <strong>일정</strong>과 <strong>참고</strong> 두 탭입니다. 참고 탭에는 항공편, 숙소 예약번호, 환전·보험처럼 <strong>특정 날짜에 매이지 않는 정보</strong>를 카드로 남깁니다.</p>
+
+      <h2 id="notify">알림과 화면 설정</h2>
+      <ul>
+        <li><strong>알림 설정</strong> — 출발 며칠 전부터 알릴지 정합니다. 목록에서 지우면 그날은 조용하고 하루 더 가까워지면 다시 알립니다.</li>
+        <li><strong>다가오는 여행</strong> — 종 아이콘으로 언제든 볼 수 있습니다. 알림을 꺼도 이 목록은 남습니다.</li>
+        <li><strong>테마 색상</strong> — 초록 · 파랑 · 노랑 · 보라 · 주황. 선택 칩과 강조 버튼, 여행 카드 색이 바뀝니다.</li>
+        <li><strong>언어</strong> — 시스템 설정 따름 · 한국어 · English. 이 앱에만 적용됩니다.</li>
+      </ul>
+
+      <h2 id="share">공유하기</h2>
+      <p>여행 상세에서 <strong>이 여행 공유</strong>를 누르면 두 가지 방법이 있습니다. 성격이 아주 다르니 목적에 맞게 고르세요.</p>
+      <div class="table-scroll">
+      <table>
+        <tr><th></th><th>사본으로 공유</th><th>온라인 링크</th></tr>
+        <tr><td>인터넷</td><td>필요 없음</td><td>필요함</td></tr>
+        <tr><td>받는 사람</td><td>자기 앱에 사본이 생김</td><td>읽기 전용으로 열람</td></tr>
+        <tr><td>수정</td><td>받은 사람이 자유롭게 수정</td><td>수정 불가</td></tr>
+        <tr><td>내가 고치면</td><td>상대에게 넘어가지 않음</td><td>기한 연장 시 최신 내용 반영</td></tr>
+        <tr><td>보관</td><td>상대 기기에 영구히</td><td>최소 30일, 이후 자동 만료</td></tr>
+      </table>
+      </div>
+      <p><strong>사본으로 공유</strong>는 일정이 길면 링크 대신 파일로 자동 전환됩니다. 받은 사람이 이미 같은 여행을 갖고 있으면 <strong>최신본으로 갱신</strong>할지 <strong>따로 보관</strong>할지 물어봅니다.</p>
+      <p><strong>온라인 링크</strong>는 이미 공유 중이면 열람 기한을 알려 주고, <strong>기한 연장</strong>을 누르면 최신 내용을 올리면서 기간도 늘어납니다. 만료된 뒤에는 <strong>온라인 링크</strong>를 다시 누르면 새로 공유됩니다.</p>
+      <div class="note">
+        <span class="label">공유를 지우고 싶다면</span>
+        <p>온라인 공유는 기한이 지나면 서버에서 자동 삭제됩니다. 그 전에 지우려면 <a href="mailto:codebrunch27@gmail.com">codebrunch27@gmail.com</a> 으로 여행 제목과 공유 링크를 보내 주세요. 자세한 보관 기준은 <a href="../privacy/triplog/">개인정보처리방침</a>에 있습니다.</p>
+      </div>
+      <p>받은 온라인 링크를 계속 보고 싶으면 <strong>내 여행으로 저장</strong>을 누르면 됩니다. 만료 뒤에도 남습니다.</p>
+
+      <h2 id="backup">백업</h2>
+      <p><strong>JSON으로 내보내기</strong>로 이 기기의 여행을 파일로 남기고, <strong>JSON에서 가져오기</strong>로 되돌릴 수 있습니다. 앱보다 최신 버전에서 만든 백업 파일은 읽지 못하므로, 그럴 때는 앱을 업데이트한 뒤 다시 시도하세요.</p>
+
+    </article>
+    <div class="doc-nav">
+      <a class="btn btn-secondary btn-sm" href="./">매뉴얼 목록</a>
+      <a class="btn btn-secondary btn-sm" href="../privacy/triplog/">개인정보처리방침</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 codebrunch. All rights reserved.</span>
+      <span><a href="../">codebrunch.github.io</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
