@@ -1,32 +1,47 @@
 /* ============================================================
    codebrunch — design tokens
    base   : awesome-design-md / linear.app
-            (near-black canvas, 4-step surface ladder, hairline
-             borders, no drop shadows, dark-only)
+            (4-step surface ladder, hairline borders, no drop
+             shadows, single chromatic accent)
    accent : lavender #5e6ad2 -> warm amber #ff9d47 (codebrunch)
-            single accent only — brand mark, primary CTA,
-            focus ring, section label. never a background.
+            fills only — brand mark, primary CTA. text-on-canvas
+            uses --accent-ink, which darkens in light mode so it
+            stays readable. never a section background.
+
+   THEME — three states, per the standard pattern:
+     :root                                  complete light palette
+     @media (prefers-color-scheme: dark)    system dark, unless the
+       :root:not([data-theme="light"])      viewer forced light
+     :root[data-theme="dark"]               explicit toggle wins
+   Every color is defined on bare :root first; the dark blocks only
+   redefine. Never give a color its ONLY definition inside a media
+   or [data-theme] block.
    ============================================================ */
 :root{
-  /* surface ladder */
-  --canvas:#010102;
-  --surface-1:#0f1011;
-  --surface-2:#141516;
-  --surface-3:#18191a;
-  --hairline:#23252a;
-  --hairline-strong:#34343a;
+  color-scheme:light;
 
-  /* ink ladder */
-  --ink:#f7f8f8;
-  --ink-muted:#d0d6e0;
-  --ink-subtle:#8a8f98;
-  --ink-tertiary:#62666d;
+  /* surface ladder — light */
+  --canvas:#ffffff;
+  --surface-1:#faf9f7;
+  --surface-2:#f4f3f0;
+  --surface-3:#edebe7;
+  --hairline:#e5e3de;
+  --hairline-strong:#d2cfc8;
+
+  /* ink ladder — light */
+  --ink:#16171a;
+  --ink-muted:#3d4046;
+  --ink-subtle:#6b6f76;
+  --ink-tertiary:#91959c;
 
   /* single chromatic accent */
-  --accent:#ff9d47;
+  --accent:#ff9d47;        /* fill — identical in both themes */
   --accent-hover:#ffb26b;
   --accent-press:#e8833a;
-  --on-accent:#18191a;
+  --on-accent:#18191a;     /* text on an accent fill */
+  --accent-ink:#a85c05;    /* accent as text/rule on the canvas */
+
+  --nav-bg:rgba(255,255,255,.82);
 
   --r-xs:4px; --r-sm:6px; --r-md:8px; --r-lg:12px; --r-xl:16px; --r-pill:9999px;
   --sp-xs:8px; --sp-sm:12px; --sp-md:16px; --sp-lg:24px; --sp-xl:32px; --sp-2xl:48px;
@@ -37,6 +52,42 @@
 
   --wrap:1120px;
   --nav-h:56px;
+}
+
+/* system dark — skipped when the viewer has explicitly chosen light */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --canvas:#010102;
+    --surface-1:#0f1011;
+    --surface-2:#141516;
+    --surface-3:#18191a;
+    --hairline:#23252a;
+    --hairline-strong:#34343a;
+    --ink:#f7f8f8;
+    --ink-muted:#d0d6e0;
+    --ink-subtle:#8a8f98;
+    --ink-tertiary:#62666d;
+    --accent-ink:#ff9d47;
+    --nav-bg:rgba(1,1,2,.82);
+  }
+}
+
+/* explicit toggle — wins over the system setting in both directions */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --canvas:#010102;
+  --surface-1:#0f1011;
+  --surface-2:#141516;
+  --surface-3:#18191a;
+  --hairline:#23252a;
+  --hairline-strong:#34343a;
+  --ink:#f7f8f8;
+  --ink-muted:#d0d6e0;
+  --ink-subtle:#8a8f98;
+  --ink-tertiary:#62666d;
+  --accent-ink:#ff9d47;
+  --nav-bg:rgba(1,1,2,.82);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -60,7 +111,12 @@ body{
 }
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:var(--r-xs)}
+code{
+  font-family:var(--mono);font-size:.88em;letter-spacing:0;
+  background:var(--surface-3);border:1px solid var(--hairline);
+  border-radius:var(--r-xs);padding:1px 5px;
+}
+:focus-visible{outline:2px solid var(--accent-ink);outline-offset:2px;border-radius:var(--r-xs)}
 
 .wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 var(--sp-lg)}
 .skip{position:absolute;left:-9999px}
@@ -69,7 +125,7 @@ a{color:inherit;text-decoration:none}
 /* ---------------- nav ---------------- */
 .nav{
   position:sticky;top:0;z-index:50;height:var(--nav-h);
-  background:rgba(1,1,2,.82);backdrop-filter:blur(12px);
+  background:var(--nav-bg);backdrop-filter:blur(12px);
   border-bottom:1px solid var(--hairline);
 }
 .nav-in{height:100%;display:flex;align-items:center;gap:var(--sp-lg)}
@@ -104,6 +160,25 @@ a{color:inherit;text-decoration:none}
   align-items:center;justify-content:center;font-size:15px;
 }
 
+/* theme toggle — always visible, outside the collapsible link list.
+   the icon shows the theme you would switch TO. */
+.theme-toggle{
+  background:none;border:1px solid var(--hairline);border-radius:var(--r-md);
+  width:38px;height:38px;flex:none;cursor:pointer;color:var(--ink-subtle);
+  display:inline-grid;place-items:center;
+  transition:color .15s,background .15s,border-color .15s;
+}
+.theme-toggle:hover{color:var(--ink);background:var(--surface-1);border-color:var(--hairline-strong)}
+.theme-toggle svg{width:17px;height:17px;display:block}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="dark"] .theme-toggle .i-sun{display:block}
+:root[data-theme="dark"] .theme-toggle .i-moon{display:none}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .theme-toggle .i-sun{display:block}
+  :root:not([data-theme="light"]) .theme-toggle .i-moon{display:none}
+}
+
 /* ---------------- hero ---------------- */
 .hero{padding:calc(var(--section) + 16px) 0 var(--section)}
 .eyebrow{
@@ -114,20 +189,20 @@ a{color:inherit;text-decoration:none}
 }
 .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);flex:none}
 h1{margin:0 0 var(--sp-lg);font-size:clamp(34px,5.6vw,68px);font-weight:600;line-height:1.08;letter-spacing:-2.2px}
-h1 .accent{color:var(--accent)}
+h1 .accent{color:var(--accent-ink)}
 .lede{margin:0 0 var(--sp-xl);max-width:54ch;font-size:18px;line-height:1.65;color:var(--ink-muted);letter-spacing:-.1px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:var(--sp-sm)}
 
 /* ---------------- section scaffolding ---------------- */
 section{padding:var(--section) 0;border-top:1px solid var(--hairline)}
 .sec-head{margin-bottom:var(--sp-2xl);max-width:62ch}
-.sec-label{margin:0 0 var(--sp-sm);font-size:13px;font-weight:500;letter-spacing:.4px;color:var(--accent);text-transform:uppercase}
+.sec-label{margin:0 0 var(--sp-sm);font-size:13px;font-weight:500;letter-spacing:.4px;color:var(--accent-ink);text-transform:uppercase}
 h2{margin:0 0 var(--sp-sm);font-size:clamp(26px,3.4vw,40px);font-weight:600;line-height:1.15;letter-spacing:-1px}
 .sec-head p{margin:0;color:var(--ink-subtle);font-size:16px;line-height:1.6}
 
 /* ---------------- app cards ---------------- */
 .grid{display:grid;gap:var(--sp-md)}
-.apps{grid-template-columns:repeat(2,1fr)}
+.apps{grid-template-columns:repeat(3,1fr)}
 .app-card{
   background:var(--surface-1);border:1px solid var(--hairline);
   border-radius:var(--r-lg);padding:var(--sp-lg);
@@ -136,6 +211,14 @@ h2{margin:0 0 var(--sp-sm);font-size:clamp(26px,3.4vw,40px);font-weight:600;line
   transition:background .18s,border-color .18s,transform .18s;
 }
 .app-card:hover{background:var(--surface-2);border-color:var(--hairline-strong);transform:translateY(-2px)}
+
+/* games sit in their own section — one full-width card, larger icon,
+   so the category reads as different at a glance rather than by label alone */
+.games{grid-template-columns:1fr}
+.app-card.featured{grid-template-columns:88px 1fr;padding:var(--sp-xl)}
+.app-card.featured .app-icon{width:88px;height:88px;font-size:40px;border-radius:var(--r-xl)}
+.app-card.featured h3{font-size:26px;letter-spacing:-.5px}
+.app-card.featured .desc{max-width:72ch}
 .app-icon{
   width:56px;height:56px;border-radius:var(--r-lg);
   display:grid;place-items:center;font-size:26px;
@@ -173,7 +256,7 @@ h2{margin:0 0 var(--sp-sm);font-size:clamp(26px,3.4vw,40px);font-weight:600;line
 .doc-row strong{display:block;font-size:16px;font-weight:500;letter-spacing:-.2px}
 .doc-row .sub{display:block;font-size:14px;color:var(--ink-subtle);margin-top:2px}
 .doc-row .arrow{color:var(--ink-tertiary);transition:color .18s,transform .18s;flex:none}
-.doc-row:hover .arrow{color:var(--accent);transform:translateX(3px)}
+.doc-row:hover .arrow{color:var(--accent-ink);transform:translateX(3px)}
 .doc-row.soon{opacity:.55;pointer-events:none}
 .doc-row.soon .arrow{visibility:hidden}
 .badge-soon{
@@ -191,9 +274,9 @@ h2{margin:0 0 var(--sp-sm);font-size:clamp(26px,3.4vw,40px);font-weight:600;line
 }
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font-family:var(--mono);color:var(--ink-tertiary);font-size:18px;flex:none}
-.faq details[open] summary::after{content:"\2212";color:var(--accent)}
+.faq details[open] summary::after{content:"\2212";color:var(--accent-ink)}
 .faq details p{margin:0 0 var(--sp-lg);color:var(--ink-subtle);font-size:15px;line-height:1.7;max-width:66ch}
-.faq details p a{color:var(--accent)}
+.faq details p a{color:var(--accent-ink)}
 
 /* ---------------- cta banner ---------------- */
 .cta{
@@ -203,7 +286,7 @@ h2{margin:0 0 var(--sp-sm);font-size:clamp(26px,3.4vw,40px);font-weight:600;line
 }
 .cta h2{margin:0 0 6px;font-size:28px;letter-spacing:-.6px}
 .cta p{margin:0;color:var(--ink-subtle);font-size:15px;line-height:1.6}
-.mono-mail{font-family:var(--mono);font-size:14px;color:var(--accent);letter-spacing:0}
+.mono-mail{font-family:var(--mono);font-size:14px;color:var(--accent-ink);letter-spacing:0}
 
 /* ---------------- footer ---------------- */
 footer{border-top:1px solid var(--hairline);padding:64px 0 48px;color:var(--ink-subtle)}
@@ -221,12 +304,16 @@ footer{border-top:1px solid var(--hairline);padding:64px 0 48px;color:var(--ink-
 
 /* ---------------- responsive ---------------- */
 @media (max-width:1024px){
+  .apps{grid-template-columns:repeat(2,1fr)}
   .foot-grid{grid-template-columns:1fr 1fr 1fr}
   .foot-about{grid-column:1 / -1}
 }
 @media (max-width:768px){
   :root{--section:64px}
   .nav-toggle{display:inline-flex}
+  .app-card.featured{grid-template-columns:56px 1fr;padding:var(--sp-lg)}
+  .app-card.featured .app-icon{width:56px;height:56px;font-size:26px;border-radius:var(--r-lg)}
+  .app-card.featured h3{font-size:22px}
   .nav-links{
     position:absolute;top:var(--nav-h);left:0;right:0;
     flex-direction:column;align-items:stretch;gap:0;
