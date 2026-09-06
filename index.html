@@ -1,25 +1,332 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GitHub 블로그</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>codebrunch — 앱 소개 &amp; 사용 매뉴얼</title>
+<meta name="description" content="codebrunch가 만든 안드로이드 앱 — 링크노트, 이세계 카우방, 여행일기, 모으다. 앱 소개와 사용 매뉴얼, 개인정보처리방침을 한곳에서 확인하세요.">
+<meta name="theme-color" content="#010102">
+<meta property="og:type" content="website">
+<meta property="og:title" content="codebrunch — 앱 소개 & 사용 매뉴얼">
+<meta property="og:description" content="링크노트 · 이세계 카우방 · 여행일기 · 모으다 — codebrunch의 안드로이드 앱 소개와 사용 매뉴얼.">
+<meta property="og:url" content="https://codebrunch.github.io/">
+<link rel="canonical" href="https://codebrunch.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff9d47'/%3E%3Cpath d='M11 11 L7 16 L11 21 M21 11 L25 16 L21 21' stroke='%2318191a' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>블로그 제목</h1>
-    <!-- 다른 헤더 내용들 추가 -->
-  </header>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
 
-  <main id="posts-list">
-    <!-- 여기에 포스트 목록이 동적으로 삽입됩니다 -->
-  </main>
+<!-- ==================== NAV ==================== -->
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      codebrunch
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="메뉴 열기">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="#apps">앱</a>
+      <a href="#manuals">매뉴얼</a>
+      <a href="#support">지원</a>
+      <a href="#privacy">개인정보</a>
+      <!-- TODO: YOUR_DEV_ID → Play 콘솔 개발자 페이지 ID -->
+      <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/dev?id=YOUR_DEV_ID" target="_blank" rel="noopener">Play 스토어</a>
+    </nav>
+  </div>
+</header>
 
-  <footer>
-    <!-- 푸터 내용 추가 -->
-  </footer>
+<main id="main">
 
-  <script src="script.js"></script>
+<!-- ==================== HERO ==================== -->
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow"><span class="dot"></span> Google Play 개발자 · codebrunch</p>
+    <h1>기기 안에 머무는<br>가벼운 앱을 만듭니다<span class="accent">.</span></h1>
+    <p class="lede">
+      링크노트, 이세계 카우방, 여행일기, 모으다 — codebrunch가 만든 안드로이드 앱입니다.
+      입력한 데이터는 원칙적으로 사용자의 기기를 벗어나지 않습니다.
+      각 앱의 소개와 사용 매뉴얼, 개인정보처리방침을 여기서 확인하세요.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#apps">앱 둘러보기</a>
+      <a class="btn btn-secondary" href="#manuals">매뉴얼 바로가기</a>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== APPS ==================== -->
+<section id="apps">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-label">Apps</p>
+      <h2>출시된 앱</h2>
+      <p>각 카드에서 Play 스토어 설치 페이지, 사용 매뉴얼, 개인정보처리방침으로 이동합니다.</p>
+    </div>
+
+    <div class="grid apps">
+
+      <!-- 링크노트 -->
+      <article class="app-card">
+        <div class="app-icon" aria-hidden="true">🔗</div>
+        <div class="app-head">
+          <h3>링크노트 <span class="en">Link Note</span></h3>
+          <p class="pkg">com.codebrunch.url</p>
+        </div>
+        <p class="desc">
+          다른 앱에서 공유한 링크를 카테고리별로 모아 두는 북마크 앱.
+          제목과 미리보기 이미지를 자동으로 읽어오고, 저장한 링크는 기기 안에만 남습니다.
+          개발자 서버도, 광고 SDK도 없습니다.
+        </p>
+        <div class="tags">
+          <span class="tag">광고 없음</span>
+          <span class="tag">서버 없음</span>
+          <span class="tag">계정 불필요</span>
+        </div>
+        <div class="app-actions">
+          <!-- TODO: 실제 스토어 URL 확인 -->
+          <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.codebrunch.url" target="_blank" rel="noopener">설치</a>
+          <a class="btn btn-secondary btn-sm" href="manuals/urlnote.html">매뉴얼</a>
+          <a class="btn btn-secondary btn-sm" href="privacy/urlnote/">개인정보</a>
+        </div>
+      </article>
+
+      <!-- 이세계 카우방 -->
+      <article class="app-card">
+        <div class="app-icon" aria-hidden="true">🐄</div>
+        <div class="app-head">
+          <h3>이세계 카우방 <span class="en">Isekai Cow Room</span></h3>
+          <p class="pkg">com.codebrunch.isekaicow</p>
+        </div>
+        <p class="desc">
+          젖소를 소환해 버티는 생존 게임. 광고는 부활·해금·기록 공유처럼 직접 버튼을 눌렀을 때만
+          재생되는 보상형이고, 게임 도중 끼어드는 전면 광고는 없습니다. 기록은 기기에만 저장됩니다.
+        </p>
+        <div class="tags">
+          <span class="tag">게임</span>
+          <span class="tag">보상형 광고만</span>
+          <span class="tag">오프라인 플레이</span>
+        </div>
+        <div class="app-actions">
+          <!-- TODO: 실제 스토어 URL 확인 -->
+          <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.codebrunch.isekaicow" target="_blank" rel="noopener">설치</a>
+          <a class="btn btn-secondary btn-sm" href="manuals/isekaicow.html">매뉴얼</a>
+          <a class="btn btn-secondary btn-sm" href="privacy/isekaicow/">개인정보</a>
+        </div>
+      </article>
+
+      <!-- 여행일기 -->
+      <article class="app-card">
+        <div class="app-icon" aria-hidden="true">✈️</div>
+        <div class="app-head">
+          <h3>여행일기 <span class="en">TripDiary</span></h3>
+          <!-- TODO: 패키지명 확인 -->
+          <p class="pkg">com.codebrunch.???</p>
+        </div>
+        <p class="desc">
+          여행명·날짜·장소·메모로 일정을 정리하는 앱. 원할 때만 &quot;온라인 링크로 공유&quot;를
+          눌러 읽기 전용 링크를 만들 수 있고, 공유본은 기간이 지나면 서버에서 자동 삭제됩니다.
+        </p>
+        <div class="tags">
+          <span class="tag">여행 계획</span>
+          <span class="tag">링크 공유</span>
+          <span class="tag">한국어 · English</span>
+        </div>
+        <div class="app-actions">
+          <!-- TODO: 실제 스토어 URL 확인 -->
+          <a class="btn btn-primary btn-sm" href="#" target="_blank" rel="noopener">설치</a>
+          <a class="btn btn-secondary btn-sm" href="manuals/tripdiary.html">매뉴얼</a>
+          <a class="btn btn-secondary btn-sm" href="privacy/triplog/">개인정보</a>
+        </div>
+      </article>
+
+      <!-- 모으다 -->
+      <article class="app-card">
+        <div class="app-icon" aria-hidden="true">🗓️</div>
+        <div class="app-head">
+          <h3>모으다 <span class="en">Mouda</span></h3>
+          <p class="pkg">com.codebrunch.omnitask</p>
+        </div>
+        <p class="desc">
+          할 일·일정·가계부를 한곳에서 관리하는 올인원 플래너. 예산 주머니로 지출 한도를 잡고
+          할 일과 가계부 항목을 서로 연결할 수 있습니다. Google 로그인 또는 게스트로 바로 시작.
+        </p>
+        <div class="tags">
+          <span class="tag">생산성</span>
+          <span class="tag">가계부 연동</span>
+          <span class="tag">게스트 모드</span>
+        </div>
+        <div class="app-actions">
+          <!-- TODO: 실제 스토어 URL 확인 -->
+          <a class="btn btn-primary btn-sm" href="https://play.google.com/store/apps/details?id=com.codebrunch.omnitask" target="_blank" rel="noopener">설치</a>
+          <a class="btn btn-secondary btn-sm" href="manuals/mouda.html">매뉴얼</a>
+          <a class="btn btn-secondary btn-sm" href="privacy/mouda/">개인정보</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MANUALS ==================== -->
+<section id="manuals">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-label">Manuals</p>
+      <h2>사용 매뉴얼</h2>
+      <p>앱 안의 &quot;도움말&quot; 메뉴가 연결될 문서입니다. 기능이 추가될 때마다 이 페이지에 반영됩니다.</p>
+    </div>
+
+    <div class="grid manuals">
+      <!-- TODO: manuals/*.html 실제 작성 후 .soon 클래스 제거 -->
+      <a class="doc-row soon" href="manuals/urlnote.html">
+        <span class="num">01</span>
+        <span class="body"><strong>링크노트 — 시작하기</strong><span class="sub">공유로 링크 저장, 카테고리 만들기, 정렬과 보관 기간</span></span>
+        <span class="badge-soon">준비 중</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="doc-row soon" href="manuals/urlnote-backup.html">
+        <span class="num">02</span>
+        <span class="body"><strong>링크노트 — 백업과 내보내기</strong><span class="sub">기기 변경 시 데이터 옮기기</span></span>
+        <span class="badge-soon">준비 중</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="doc-row soon" href="manuals/isekaicow.html">
+        <span class="num">03</span>
+        <span class="body"><strong>이세계 카우방 — 플레이 가이드</strong><span class="sub">조작, 부활, 색·난이도 해금 조건</span></span>
+        <span class="badge-soon">준비 중</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="doc-row soon" href="manuals/tripdiary.html">
+        <span class="num">04</span>
+        <span class="body"><strong>여행일기 — 시작하기</strong><span class="sub">일정 등록, 커버 이미지, 온라인 링크 공유와 삭제</span></span>
+        <span class="badge-soon">준비 중</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="doc-row soon" href="manuals/mouda.html">
+        <span class="num">05</span>
+        <span class="body"><strong>모으다 — 시작하기</strong><span class="sub">일정·할 일 등록, 카테고리와 우선순위</span></span>
+        <span class="badge-soon">준비 중</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="doc-row soon" href="manuals/mouda-budget.html">
+        <span class="num">06</span>
+        <span class="body"><strong>모으다 — 가계부와 통계</strong><span class="sub">예산 주머니, 할 일 연동, 완료율 통계</span></span>
+        <span class="badge-soon">준비 중</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SUPPORT / FAQ ==================== -->
+<section id="support">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-label">Support</p>
+      <h2>자주 묻는 질문</h2>
+    </div>
+
+    <div class="faq">
+      <details open>
+        <summary>내 데이터는 어디에 저장되나요?</summary>
+        <p>입력한 내용은 기본적으로 기기 내부 저장소에만 저장되고 개발자 서버로 전송되지 않습니다. 예외는 두 가지입니다. 여행일기에서 &quot;온라인 링크로 공유&quot;를 직접 누르면 해당 일정이 Firebase에 업로드되고, 모으다에서 Google 로그인을 하면 이메일·이름·프로필 사진이 계정 식별에 사용됩니다.</p>
+      </details>
+      <details>
+        <summary>로그인 없이 쓸 수 있나요?</summary>
+        <p>링크노트, 이세계 카우방, 여행일기는 계정 자체가 없습니다. 모으다는 Google 로그인과 게스트 모드를 모두 지원하며, 게스트로 이용하면 Google 계정 정보가 전혀 수집되지 않습니다.</p>
+      </details>
+      <details>
+        <summary>광고가 나오는 앱은 무엇인가요?</summary>
+        <p>이세계 카우방만 Google AdMob 광고를 사용합니다. 그것도 부활·해금·기록 공유처럼 사용자가 직접 버튼을 눌렀을 때만 재생되는 보상형 광고이며, 게임 도중 끼어드는 전면 광고는 없습니다. 링크노트·여행일기·모으다는 광고 SDK를 포함하지 않습니다.</p>
+      </details>
+      <details>
+        <summary>맞춤 광고를 원하지 않습니다.</summary>
+        <p>안드로이드 설정 &gt; 개인 정보 보호 &gt; 광고에서 광고 ID를 삭제하거나 맞춤 광고를 사용 중지할 수 있습니다. 자세한 내용은 <a href="privacy/isekaicow/">이세계 카우방 개인정보처리방침</a>을 참고하세요.</p>
+      </details>
+      <details>
+        <summary>공유한 여행 일정을 지우고 싶어요.</summary>
+        <p>온라인으로 공유한 일정은 일정 기간이 지나면 서버에서 자동 삭제됩니다. 그 전에 삭제하려면 아래 이메일로 여행 제목과 공유 링크를 보내주세요.</p>
+      </details>
+      <details>
+        <summary>버그를 발견했어요. 어디로 알리면 되나요?</summary>
+        <p>아래 이메일로 앱 이름, 기기 모델, 안드로이드 버전, 재현 방법을 함께 보내주시면 확인 후 회신하겠습니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRIVACY / CTA ==================== -->
+<section id="privacy">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2>개인정보처리방침 &amp; 문의</h2>
+        <p>Play 콘솔에 등록된 앱별 방침 문서입니다. 이 저장소가 정본이며, 앱 동작이 바뀌면 함께 갱신합니다.</p>
+        <p style="margin-top:12px"><a class="mono-mail" href="mailto:codebrunch27@gmail.com">codebrunch27@gmail.com</a></p>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-secondary" href="privacy/urlnote/">링크노트</a>
+        <a class="btn btn-secondary" href="privacy/isekaicow/">이세계 카우방</a>
+        <a class="btn btn-secondary" href="privacy/triplog/">여행일기</a>
+        <a class="btn btn-secondary" href="privacy/mouda/">모으다</a>
+        <a class="btn btn-primary" href="mailto:codebrunch27@gmail.com">문의하기</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col foot-about">
+        <a class="brand" href="#top">
+          <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+          codebrunch
+        </a>
+        <p>Google Play에 앱을 만들어 올리는 1인 개발자입니다. 계정 없이, 서버 없이 동작하는 앱을 지향합니다.</p>
+      </div>
+      <div class="foot-col">
+        <h4>앱</h4>
+        <ul>
+          <li><a href="#apps">링크노트</a></li>
+          <li><a href="#apps">이세계 카우방</a></li>
+          <li><a href="#apps">여행일기</a></li>
+          <li><a href="#apps">모으다</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>문서</h4>
+        <ul>
+          <li><a href="#manuals">사용 매뉴얼</a></li>
+          <li><a href="#support">자주 묻는 질문</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>정책</h4>
+        <ul>
+          <li><a href="privacy/urlnote/">링크노트 방침</a></li>
+          <li><a href="privacy/isekaicow/">카우방 방침</a></li>
+          <li><a href="privacy/triplog/">여행일기 방침</a></li>
+          <li><a href="privacy/mouda/">모으다 방침</a></li>
+          <li><a href="app-ads.txt">app-ads.txt</a></li>
+          <li><a href="mailto:codebrunch27@gmail.com">문의</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 codebrunch. All rights reserved.</span>
+      <span>Built with GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
