@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>공유된 일정 열기 — 여행일기 — codebrunch</title>
+<meta name="description" content="여행일기에서 공유한 일정을 여는 페이지입니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#010102" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="canonical" href="https://codebrunch.github.io/open">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff9d47'/%3E%3Cpath d='M11 11 L7 16 L11 21 M21 11 L25 16 L21 21' stroke='%2318191a' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="../">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      codebrunch
+    </a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 전환">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="메뉴 열기">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="../#apps">앱</a>
+      <a href="../#games">게임</a>
+      <a href="../manuals/">매뉴얼</a>
+      <a href="../#support">지원</a>
+      <a href="../privacy/">개인정보</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <div class="wrap doc-wrap">
+    <p class="eyebrow"><span class="dot"></span> 여행일기 · TripDiary</p>
+    <h1 id="title">공유된 일정 열기</h1>
+    <p class="lede" id="lede">앱을 확인하는 중입니다…</p>
+
+    <article class="prose" id="body" hidden>
+      <h2>앱이 설치돼 있다면</h2>
+      <p>
+        이 링크는 여행일기 앱에서 바로 열리도록 만들어졌습니다. 앱이 있는데도 이 페이지가
+        보인다면, 링크를 길게 눌러 <strong>여행일기로 열기</strong>를 선택하거나
+        아래 버튼을 눌러 주세요.
+      </p>
+      <p>
+        <a class="btn btn-primary" id="openApp" href="#">앱에서 열기</a>
+      </p>
+
+      <h2>앱이 없다면</h2>
+      <p>
+        여행일기를 설치한 뒤 이 링크를 다시 누르면 일정이 들어옵니다.
+        링크에 담긴 내용은 이 페이지가 서버로 보내지 않습니다.
+      </p>
+      <p>
+        <a class="btn btn-secondary btn-sm" href="../manuals/tripdiary.html">앱 사용법 보기</a>
+        <a class="btn btn-secondary btn-sm" href="../privacy/triplog/">개인정보처리방침</a>
+      </p>
+    </article>
+
+    <article class="prose" id="empty" hidden>
+      <h2>열 수 있는 일정이 없습니다</h2>
+      <p>
+        주소에 공유 정보가 담겨 있지 않습니다. 받은 링크를 끝까지 복사했는지 확인해 주세요.
+        메신저에서 링크가 잘렸을 수 있습니다.
+      </p>
+      <p>
+        <a class="btn btn-secondary btn-sm" href="../">codebrunch 홈</a>
+      </p>
+    </article>
+  </div>
+</main>
+
+<script>
+  // 공유 정보는 "#" 뒤에 실려 있어 서버로 전송되지 않는다. 여기서만 읽어
+  // 무엇을 안내할지 정하고, 앱으로 넘기는 링크를 만든다.
+  (function () {
+    var fragment = window.location.hash.replace(/^#/, "");
+    var hasTrip = /(^|&)t=[^&]/.test(fragment);
+    var hasOnline = /(^|&)s=[^&]/.test(fragment);
+
+    var title = document.getElementById("title");
+    var lede = document.getElementById("lede");
+
+    if (!hasTrip && !hasOnline) {
+      document.getElementById("empty").hidden = false;
+      title.textContent = "링크를 읽을 수 없습니다";
+      lede.textContent = "주소에 공유 정보가 없습니다.";
+      return;
+    }
+
+    title.textContent = hasOnline ? "공유된 일정 보기" : "공유된 일정 가져오기";
+    lede.textContent = hasOnline
+      ? "받은 링크로 상대의 최신 일정을 읽기 전용으로 볼 수 있습니다."
+      : "받은 링크의 일정을 내 앱에 사본으로 담을 수 있습니다.";
+
+    // 앱이 설치돼 있으면 옛 커스텀 스킴으로도 열 수 있다. 자동 이동은 하지 않는다 —
+    // 앱이 없을 때 오류 화면만 뜨고 끝나 버리기 때문에, 누를지는 사용자가 정한다.
+    var scheme = hasOnline
+      ? "triptracker://online?id=" + (fragment.match(/(?:^|&)s=([^&]*)/) || [])[1]
+      : "triptracker://trip?data=" + (fragment.match(/(?:^|&)t=([^&]*)/) || [])[1];
+    document.getElementById("openApp").setAttribute("href", scheme);
+
+    document.getElementById("body").hidden = false;
+  })();
+</script>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 codebrunch. All rights reserved.</span>
+      <span><a href="../">codebrunch.github.io</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
