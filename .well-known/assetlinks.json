@@ -5,7 +5,9 @@
       "namespace": "android_app",
       "package_name": "com.codebrunch.triplog",
       "sha256_cert_fingerprints": [
-        "D4:9F:B6:9F:7E:E0:E6:E9:2A:85:AC:BA:20:12:AD:29:A9:9F:A6:E1:C6:5D:27:6A:9E:CF:8B:38:52:85:F4:9C"
+        "D4:9F:B6:9F:7E:E0:E6:E9:2A:85:AC:BA:20:12:AD:29:A9:9F:A6:E1:C6:5D:27:6A:9E:CF:8B:38:52:85:F4:9C",
+        "39:D6:6B:2F:55:90:3E:86:EF:F6:36:7D:8A:B5:A9:DB:DF:DF:64:18:52:37:C4:7C:9A:BD:65:BD:27:E6:55:F2",
+        "6D:50:11:5C:1A:E3:AD:CD:8D:75:01:55:09:B0:9A:6D:F8:FF:A0:D5:22:61:34:8D:02:66:20:D3:E9:39:7A:A4"
       ]
     }
   }
