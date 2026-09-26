@@ -48,9 +48,8 @@
     <article class="prose" id="body" hidden>
       <h2>앱이 설치돼 있다면</h2>
       <p>
-        이 링크는 여행일기 앱에서 바로 열리도록 만들어졌습니다. 앱이 있는데도 이 페이지가
-        보인다면, 링크를 길게 눌러 <strong>여행일기로 열기</strong>를 선택하거나
-        아래 버튼을 눌러 주세요.
+        이 링크는 여행일기 앱에서 바로 열립니다. 앱이 설치돼 있는데도 이 페이지가 남아
+        있다면 아래 버튼을 눌러 주세요.
       </p>
       <p>
         <a class="btn btn-primary" id="openApp" href="#">앱에서 열기</a>
@@ -83,34 +82,52 @@
 <script>
   // 공유 정보는 "#" 뒤에 실려 있어 서버로 전송되지 않는다. 여기서만 읽어
   // 무엇을 안내할지 정하고, 앱으로 넘기는 링크를 만든다.
+  //
+  // 안드로이드에서는 **바로 앱으로 튕긴다.** App Links(assetlinks.json)만으로는
+  // 카카오톡처럼 자체 웹뷰로 URL을 직접 로드하는 앱에서 앱이 열리지 않는다 — 그런 앱은
+  // 안드로이드의 VIEW 인텐트를 거치지 않기 때문에 검증 상태와 무관하게 페이지가 열린다.
+  // intent:// 는 웹뷰에서도 처리되므로 이 경로로 넘긴다.
   (function () {
+    var PACKAGE = "com.codebrunch.triplog";
     var fragment = window.location.hash.replace(/^#/, "");
-    var hasTrip = /(^|&)t=[^&]/.test(fragment);
-    var hasOnline = /(^|&)s=[^&]/.test(fragment);
+    var trip = (fragment.match(/(?:^|&)t=([^&]+)/) || [])[1];
+    var online = (fragment.match(/(?:^|&)s=([^&]+)/) || [])[1];
 
     var title = document.getElementById("title");
     var lede = document.getElementById("lede");
 
-    if (!hasTrip && !hasOnline) {
+    if (!trip && !online) {
       document.getElementById("empty").hidden = false;
       title.textContent = "링크를 읽을 수 없습니다";
       lede.textContent = "주소에 공유 정보가 없습니다.";
       return;
     }
 
-    title.textContent = hasOnline ? "공유된 일정 보기" : "공유된 일정 가져오기";
-    lede.textContent = hasOnline
+    title.textContent = online ? "공유된 일정 보기" : "공유된 일정 가져오기";
+    lede.textContent = online
       ? "받은 링크로 상대의 최신 일정을 읽기 전용으로 볼 수 있습니다."
       : "받은 링크의 일정을 내 앱에 사본으로 담을 수 있습니다.";
 
-    // 앱이 설치돼 있으면 옛 커스텀 스킴으로도 열 수 있다. 자동 이동은 하지 않는다 —
-    // 앱이 없을 때 오류 화면만 뜨고 끝나 버리기 때문에, 누를지는 사용자가 정한다.
-    var scheme = hasOnline
-      ? "triptracker://online?id=" + (fragment.match(/(?:^|&)s=([^&]*)/) || [])[1]
-      : "triptracker://trip?data=" + (fragment.match(/(?:^|&)t=([^&]*)/) || [])[1];
-    document.getElementById("openApp").setAttribute("href", scheme);
-
+    // 앱이 받는 주소. 옛 커스텀 스킴이라 예전 버전 앱에서도 열린다.
+    var appUrl = online
+      ? "triptracker://online?id=" + online
+      : "triptracker://trip?data=" + trip;
+    document.getElementById("openApp").setAttribute("href", appUrl);
     document.getElementById("body").hidden = false;
+
+    // stay=1이 붙어 돌아온 경우는 앱이 없어서 되돌아온 것이다. 다시 튕기면 무한히 오간다.
+    var stay = /(?:^|[?&])stay=1(?:&|$)/.test(window.location.search);
+    var isAndroid = /android/i.test(navigator.userAgent);
+    if (stay || !isAndroid) return;
+
+    // 앱이 없으면 이 페이지로 되돌아오게 한다(플레이 스토어로 끌고 가지 않는다).
+    var fallback = window.location.origin + window.location.pathname +
+      "?stay=1" + window.location.hash;
+    var intentUrl = "intent://" + appUrl.replace(/^triptracker:\/\//, "") +
+      "#Intent;scheme=triptracker;package=" + PACKAGE +
+      ";S.browser_fallback_url=" + encodeURIComponent(fallback) + ";end";
+
+    window.location.replace(intentUrl);
   })();
 </script>
 
