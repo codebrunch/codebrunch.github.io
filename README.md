@@ -24,6 +24,8 @@ manuals/
   mouda.html                모으다 — 시작하기
   mouda-budget.html         모으다 — 가계부와 통계
   isekaicow.html            이세계 카우방 — 플레이 가이드
+tools/
+  db-dc/index.html          퇴직연금 DB→DC 전환 금액 계산기 (입력값은 브라우저 안에서만 계산)
 app-ads.txt                 AdMob 앱 인증 — 반드시 도메인 루트에 유지
 google69e3d51c4a90be92.html Google Search Console 소유권 확인 — 삭제 금지
 ```

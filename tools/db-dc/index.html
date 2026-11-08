@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>퇴직연금 DB→DC 전환 금액 계산기 — codebrunch</title>
+<meta name="description" content="퇴직연금 DB형에서 DC형으로 바꿀 때 옮겨지는 금액(전환일 기준 퇴직금)과 퇴직 시점 DB·DC 예상액을 계산합니다. 입력값은 기기 밖으로 전송되지 않습니다.">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#010102" media="(prefers-color-scheme: dark)">
+<script>try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
+<link rel="canonical" href="https://codebrunch.github.io/tools/db-dc/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff9d47'/%3E%3Cpath d='M11 11 L7 16 L11 21 M21 11 L25 16 L21 21' stroke='%2318191a' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+<style>
+/* 계산기 전용 — 색은 style.css 토큰만 쓴다 */
+.calc{display:grid;gap:var(--sp-md);margin:var(--sp-lg) 0}
+.calc fieldset{border:1px solid var(--hairline);border-radius:var(--r-lg);background:var(--surface-1);padding:var(--sp-lg);margin:0;min-width:0}
+.calc legend{font-weight:600;padding:0 6px}
+.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-md)}
+.field{display:grid;gap:6px;min-width:0}
+.field label{font-weight:500;font-size:.95rem}
+.field small{color:var(--ink-subtle);font-size:.82rem;line-height:1.45}
+.field input{font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--hairline-strong);border-radius:var(--r-md);
+  background:var(--canvas);color:var(--ink);width:100%;font-variant-numeric:tabular-nums}
+.field input:focus{outline:2px solid var(--accent-ink);outline-offset:1px}
+.result{border:1px solid var(--hairline-strong);border-radius:var(--r-lg);background:var(--surface-2);padding:var(--sp-lg)}
+.result h3{margin:0 0 var(--sp-sm)}
+.big{font-size:clamp(1.6rem,6vw,2.2rem);font-weight:700;font-variant-numeric:tabular-nums;color:var(--accent-ink);margin:4px 0 2px}
+.rows{display:grid;gap:6px;margin-top:var(--sp-sm)}
+.rows div{display:flex;justify-content:space-between;gap:var(--sp-md);border-top:1px solid var(--hairline);padding-top:6px;font-variant-numeric:tabular-nums}
+.rows span:first-child{color:var(--ink-muted)}
+.rows span:last-child{text-align:right;font-weight:500}
+.win{font-weight:700}
+.err{color:var(--accent-ink);font-weight:500}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="../../">
+      <span class="brand-mark" aria-hidden="true">&lt;/&gt;</span>
+      codebrunch
+    </a>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="다크 모드로 전환">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="메뉴 열기">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="../../#apps">앱</a>
+      <a href="../../manuals/">매뉴얼</a>
+      <a href="../../#support">지원</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <div class="wrap doc-wrap">
+    <p class="eyebrow"><span class="dot"></span> 계산기 · 퇴직연금</p>
+    <h1>DB→DC 전환 금액 계산기</h1>
+    <p class="lede">DB형 퇴직연금을 DC형으로 바꿀 때 DC 계좌로 옮겨지는 금액(전환일 기준 퇴직금)을 계산하고, 퇴직 시점에 어느 쪽이 더 많을지 비교합니다.</p>
+    <div class="doc-meta">
+      <span><span class="k">기준 </span>근로기준법 평균임금 · 고용노동부 상담 답변</span>
+      <span><span class="k">업데이트 </span>2026년 11월 8일</span>
+    </div>
+
+    <article class="prose">
+      <div class="note">
+        <span class="label">개인정보</span>
+        <p>입력한 금액은 이 브라우저 안에서만 계산하고 어디에도 저장하거나 전송하지 않습니다.</p>
+      </div>
+
+      <form class="calc" id="calc" novalidate>
+        <fieldset>
+          <legend>1. 전환 금액</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="join">입사일</label>
+              <input id="join" type="date" required>
+            </div>
+            <div class="field">
+              <label for="conv">전환일</label>
+              <input id="conv" type="date" required>
+              <small>회사가 정한 기준일 (예: 신청일 전달 말일)</small>
+            </div>
+            <div class="field">
+              <label for="wage3">전환일 직전 3개월 임금 총액 (원)</label>
+              <input id="wage3" inputmode="numeric" placeholder="예: 24,000,000" required>
+              <small>세전 기본급·수당·연장근로수당 합계</small>
+            </div>
+            <div class="field">
+              <label for="bonus">연간 상여금 (원, 선택)</label>
+              <input id="bonus" inputmode="numeric" placeholder="0">
+              <small>평균임금에 넣는 상여금. 3/12만 3개월 임금에 더합니다. 포함 항목은 회사 규약을 확인하세요</small>
+            </div>
+            <div class="field">
+              <label for="days3">3개월 일수 (선택)</label>
+              <input id="days3" inputmode="numeric" placeholder="전환일로 자동 계산">
+            </div>
+            <div class="field">
+              <label for="wage12">전환일 직전 1년 임금 총액 (원, 선택)</label>
+              <input id="wage12" inputmode="numeric" placeholder="입력하면 두 방식 비교">
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="result" id="out1" aria-live="polite"></div>
+
+        <fieldset>
+          <legend>2. 퇴직 시점 DB·DC 비교 (선택)</legend>
+          <div class="fields">
+            <div class="field">
+              <label for="years">퇴직까지 남은 기간 (년)</label>
+              <input id="years" inputmode="decimal" placeholder="예: 10">
+            </div>
+            <div class="field">
+              <label for="growth">연 임금 상승률 (%)</label>
+              <input id="growth" inputmode="decimal" placeholder="예: 3">
+              <small>임금피크로 줄어들면 음수로 넣으세요</small>
+            </div>
+            <div class="field">
+              <label for="ret">DC 연 운용 수익률 (%)</label>
+              <input id="ret" inputmode="decimal" placeholder="예: 4">
+              <small>수수료를 뺀 값</small>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="result" id="out2" aria-live="polite"></div>
+      </form>
+
+      <h2 id="how">계산 방법</h2>
+      <p><strong>평균임금</strong>은 전환일 직전 3개월 동안 받은 임금 총액(연간 상여금의 3/12 포함)을 그 기간의 일수로 나눈 금액입니다.</p>
+      <div class="table-scroll">
+      <table>
+        <tr><th>방식</th><th>산식</th></tr>
+        <tr><td>① 3개월 평균임금</td><td>평균임금 × 30 × 근속일수 ÷ 365</td></tr>
+        <tr><td>② 1년 임금 총액</td><td>1년 임금 총액 ÷ 12 × 근속연수 (근속일수 ÷ 365)</td></tr>
+      </table>
+      </div>
+      <p>고용노동부 상담 답변은 두 금액 가운데 큰 쪽을 넣으면 된다고 안내합니다. 실제로 어느 방식을 쓰는지, 과거 근무기간을 모두 소급하는지는 회사 퇴직연금 규약이 정합니다.</p>
+      <p><strong>퇴직 시점 비교</strong>는 단순화한 추정입니다. DB는 퇴직 직전 평균임금으로 전체 근속기간을 다시 계산하고, DC는 전환 금액을 운용하면서 매년 연간 임금의 1/12을 연말에 더한다고 봅니다. 세금, 수수료, 중도 인출은 반영하지 않습니다.</p>
+
+      <div class="note">
+        <span class="label">꼭 확인하세요</span>
+        <p>이 계산기는 참고용입니다. 평균임금에 들어가는 항목, 전환일, 소급 범위, 전환 횟수 제한은 회사마다 다릅니다. 결정 전에 회사 퇴직연금 담당자나 노무사에게 실제 금액을 확인하세요. DC형은 운용 결과에 따라 원금이 줄 수 있습니다.</p>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 codebrunch. All rights reserved.</span>
+      <span><a href="../../">codebrunch.github.io</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../../script.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var DAY = 86400000;
+  var won = function (v) { return Math.round(v).toLocaleString('ko-KR') + '원'; };
+  var num = function (id) {
+    var v = String($(id).value).replace(/[^0-9.\-]/g, '');
+    return v === '' || v === '-' ? null : Number(v);
+  };
+  var date = function (id) { return $(id).value ? new Date($(id).value + 'T00:00:00') : null; };
+
+  // 숫자 칸은 입력하는 동안 천 단위 쉼표를 붙인다
+  ['wage3', 'bonus', 'wage12'].forEach(function (id) {
+    $(id).addEventListener('input', function () {
+      var raw = this.value.replace(/[^0-9]/g, '');
+      this.value = raw ? Number(raw).toLocaleString('ko-KR') : '';
+    });
+  });
+
+  function rows(list) {
+    return '<div class="rows">' + list.map(function (r) {
+      return '<div><span>' + r[0] + '</span><span' + (r[2] ? ' class="win"' : '') + '>' + r[1] + '</span></div>';
+    }).join('') + '</div>';
+  }
+
+  function calc() {
+    var join = date('join'), conv = date('conv'), wage3 = num('wage3');
+    var out1 = $('out1'), out2 = $('out2');
+    if (!join || !conv || wage3 === null) {
+      out1.innerHTML = '<h3>전환 금액</h3><p>입사일, 전환일, 3개월 임금 총액을 넣으면 계산합니다.</p>';
+      out2.innerHTML = '';
+      return;
+    }
+    if (conv <= join) {
+      out1.innerHTML = '<h3>전환 금액</h3><p class="err">전환일이 입사일보다 뒤여야 합니다.</p>';
+      out2.innerHTML = '';
+      return;
+    }
+    var start = new Date(conv); start.setMonth(start.getMonth() - 3);
+    var days3 = num('days3') || Math.round((conv - start) / DAY);
+    var bonus = num('bonus') || 0;
+    var serviceDays = Math.round((conv - join) / DAY);
+    var avg = (wage3 + bonus * 3 / 12) / days3;
+    var a = avg * 30 * serviceDays / 365;
+    var wage12 = num('wage12');
+    var b = wage12 === null ? null : wage12 / 12 * serviceDays / 365;
+    var amount = b === null ? a : Math.max(a, b);
+    var list = [
+      ['근속', serviceDays.toLocaleString('ko-KR') + '일 (' + (serviceDays / 365).toFixed(2) + '년)'],
+      ['3개월 일수', days3 + '일'],
+      ['평균임금 (1일)', won(avg)],
+      ['① 3개월 평균임금 방식', won(a), b !== null && a >= b]
+    ];
+    if (b !== null) list.push(['② 1년 임금 총액 방식', won(b), b > a]);
+    out1.innerHTML = '<h3>DC로 옮겨지는 금액 (예상)</h3><p class="big">' + won(amount) + '</p>' +
+      '<p>' + (b === null ? '1년 임금 총액을 넣으면 ② 방식과 비교해 큰 쪽을 보여 줍니다.' : '두 방식 중 큰 금액입니다.') + '</p>' + rows(list);
+
+    var years = num('years'), g = num('growth'), r = num('ret');
+    if (years === null || g === null || r === null || years <= 0) {
+      out2.innerHTML = '<h3>퇴직 시점 비교</h3><p>남은 기간, 임금 상승률, 운용 수익률을 넣으면 비교합니다.</p>';
+      return;
+    }
+    g /= 100; r /= 100;
+    var n = Math.round(years);
+    var db = avg * Math.pow(1 + g, years) * 30 * (serviceDays + years * 365) / 365;
+    var annual = wage12 !== null ? wage12 : avg * 365;
+    var dc = amount * Math.pow(1 + r, years);
+    for (var k = 1; k <= n; k++) dc += annual * Math.pow(1 + g, k) / 12 * Math.pow(1 + r, n - k);
+    var dcWins = dc > db;
+    out2.innerHTML = '<h3>퇴직 시점 예상액 (' + years + '년 뒤)</h3>' +
+      '<p class="big">' + (dcWins ? 'DC' : 'DB') + ' 쪽이 ' + won(Math.abs(dc - db)) + ' 더 많음</p>' +
+      rows([['DB 유지', won(db), !dcWins], ['DC 전환', won(dc), dcWins]]) +
+      '<p><small>임금 상승률과 수익률을 가정한 추정이라 실제와 다를 수 있습니다.</small></p>';
+  }
+
+  // 전환일 기본값: 이번 달 1일의 전날(지난달 말일)
+  var d = new Date(); d.setDate(0);
+  $('conv').value = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+  $('calc').addEventListener('input', calc);
+  $('calc').addEventListener('submit', function (e) { e.preventDefault(); });
+  calc();
+})();
+</script>
+</body>
+</html>
